@@ -2,17 +2,35 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\PelangganAuthController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+// ======= admin =======
+Route::prefix('admin')->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [LoginController::class, 'login'])->name('admin.login.submit');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard-placeholder');
-    })->name('admin.dashboard');
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard-placeholder');
+        })->name('admin.dashboard');
+    });
+});
+
+// ========= pelanggan ==========
+Route::get('/register', [PelangganAuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [PelangganAuthController::class, 'register'])->name('register.submit');
+
+Route::get('/login', [PelangganAuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [PelangganAuthController::class, 'login'])->name('login.submit');
+Route::post('/logout', [PelangganAuthController::class, 'logout'])->name('logout');
+
+Route::middleware('auth:pelanggan')->group(function () {
+    Route::get('/pelanggan/dashboard', function () {
+        return view('pelanggan.dashboard-placeholder');
+    })->name('pelanggan.dashboard');
 });

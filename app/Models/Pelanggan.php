@@ -2,19 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Pelanggan extends Model
+class Pelanggan extends Authenticatable
 {
     protected $table = 'pelanggan';
     protected $primaryKey = 'id_pelanggan';
     public $timestamps = false;
+    protected $guard = 'pelanggan';
 
     protected $fillable = [
         'nama_pelanggan',
+        'username',
+        'password',
         'no_hp',
         'alamat',
     ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    protected function casts(): array
+    {
+        return[
+            'password' => 'hashed',
+        ];
+    }
 
     // 1 pelanggan punya banyak transaksi
     public function transaksi()
