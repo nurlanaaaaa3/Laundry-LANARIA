@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PelangganAuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PelangganController;
+use App\Http\Controllers\Admin\LayananController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +22,10 @@ Route::prefix('admin')->group(function () {
 
         Route::resource('pelanggan', PelangganController::class)
             ->names('admin.pelanggan')
+            ->except(['show']);
+        
+        Route::resource('layanan', LayananController::class)
+            ->names('admin.layanan')
             ->except(['show']);
     });
 });
