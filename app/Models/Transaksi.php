@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaksi extends Model
 {
     protected $table = 'transaksi';
-    protected $primarykey = 'id_transaksi';
+    protected $primaryKey = 'id_transaksi';
     public $timestamps = false;
 
     protected $fillable = [
@@ -17,7 +17,7 @@ class Transaksi extends Model
         'tanggal_selesai',
         'total',
         'dibayar', 
-        'kembalikan',
+        'kembalian',
         'status_pembayaran',
         'status_laundry',
         'catatan',
