@@ -11,7 +11,7 @@
         .navbar-admin .navbar-brand { font-family: 'Playfair Display', serif; color: #FFFFFF !important; font-weight: 700; }
         .btn-primary { background-color: #07549A; border-color: #07549A; }
         .btn-primary:hover { background-color: #063B70; border-color: #063B70; }
-        .form-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; max-width: 700px; }
+        .form-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; max-width: 100%; }
         .row-layanan { background: #EAF4FC; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
         .total-box { background: #063B70; color: #FFFFFF; border-radius: 8px; padding: 16px; }
         .total-box .nominal { font-size: 24px; font-weight: 600; }

@@ -49,6 +49,13 @@
                 <input type="text" name="q" class="form-control" placeholder="Cari nama pelanggan" value="{{ $keyword }}">
                 <button type="submit" class="btn btn-outline-secondary">Cari</button>
             </div>
+            <select name="status" class="form-select" style="max-width: 200px;" onchange="this.form.submit()">
+                <option value="">Semua Status</option>
+                <option value="menunggu" {{ $status == 'menunggu' ? 'selected' : '' }}>Menunggu</option>
+                <option value="diproses" {{ $status == 'diproses' ? 'selected' : '' }}>Diproses</option>
+                <option value="selesai" {{ $status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                <option value="diambil" {{ $status == 'diambil' ? 'selected' : '' }}>Diambil</option>
+            </select>
         </form>
 
         <div class="table-responsive">

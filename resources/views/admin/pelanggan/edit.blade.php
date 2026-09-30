@@ -11,7 +11,7 @@
         .navbar-admin .navbar-brand { font-family: 'Playfair Display', serif; color: #FFFFFF !important; font-weight: 700; }
         .btn-primary { background-color: #07549A; border-color: #07549A; }
         .btn-primary:hover { background-color: #063B70; border-color: #063B70; }
-        .form-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; max-width: 500px; }
+        .form-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 12px; padding: 24px; max-width: 100%; }
     </style>
 </head>
 <body>

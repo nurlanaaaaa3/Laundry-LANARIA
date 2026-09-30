@@ -18,6 +18,7 @@ class TransaksiController extends Controller
     public function index(Request $request)
     {
         $keyword = $request->query('q');
+        $status = $request->query('status');
 
         $transaksi = Transaksi::with(['pelanggan', 'user'])
             ->when($keyword, function ($query, $keyword) {
@@ -25,11 +26,14 @@ class TransaksiController extends Controller
                     $q->where('nama_pelanggan', 'like', "%{$keyword}%");
                 });
             })
+            ->when($status, function ($query, $status) {
+                $query->where('status_laundry', $status);
+            })
             ->orderByDesc('id_transaksi')
             ->paginate(10)
             ->withQueryString();
-        
-        return view('admin.transaksi.index', compact('transaksi', 'keyword'));
+
+        return view('admin.transaksi.index', compact('transaksi', 'keyword', 'status'));
     }
 
     /**
@@ -71,8 +75,8 @@ class TransaksiController extends Controller
                     'jumlah' => $item['jumlah'],
                     'harga' => $layanan->harga,
                     'subtotal' => $subtotal,
-    ];
-}
+                ];
+            }
 
             $dibayar = $data['dibayar'];
             $kembalian = max(0, $dibayar - $total);
@@ -121,6 +125,12 @@ class TransaksiController extends Controller
             'dibayar' => 'required|integer|min:0',
             'catatan' => 'nullable|string',
         ]);
+
+        if ($data['status_pembayaran'] === 'lunas' && $data['dibayar'] < $transaksi->total) {
+            return back()
+                ->withErrors(['dibayar' => 'Status tidak bisa "Lunas" jika jumlah dibayar kurang dari total tagihan.'])
+                ->withInput();
+        }
 
         $kembalian = max(0, $data['dibayar'] - $transaksi->total);
 
