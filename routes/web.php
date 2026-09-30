@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PelangganController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\BookingController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
@@ -23,11 +24,11 @@ Route::prefix('admin')->group(function () {
         Route::resource('pelanggan', PelangganController::class)
             ->names('admin.pelanggan')
             ->except(['show']);
-        
+
         Route::resource('layanan', LayananController::class)
             ->names('admin.layanan')
             ->except(['show']);
-        
+
         Route::resource('transaksi', TransaksiController::class)
             ->names('admin.transaksi')
             ->except(['show']);
@@ -43,7 +44,7 @@ Route::post('/login', [PelangganAuthController::class, 'login'])->name('login.su
 Route::post('/logout', [PelangganAuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth:pelanggan')->group(function () {
-    Route::get('/pelanggan/dashboard', function () {
-        return view('pelanggan.dashboard-placeholder');
-    })->name('pelanggan.dashboard');
+    Route::get('/pelanggan/dashboard', [BookingController::class, 'dashboard'])->name('pelanggan.dashboard');
+    Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
+    Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 });
