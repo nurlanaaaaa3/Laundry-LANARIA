@@ -169,6 +169,44 @@
         footer {
             background: linear-gradient(135deg, var(--dark-blue), #052C54) !important;
         }
+
+        /* TABEL HARGA PREMIUM */
+        .price-table-wrap {
+            background: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 34px rgba(6, 59, 112, 0.1);
+        }
+        .price-table thead tr {
+            background: linear-gradient(90deg, var(--dark-blue), var(--main-blue));
+        }
+        .price-table thead th {
+            color: #FFFFFF;
+            font-weight: 600;
+            border: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .price-table tbody tr {
+            border-bottom: 1px solid #F1F5F9;
+            transition: background-color 0.15s ease;
+        }
+        .price-table tbody tr:last-child {
+            border-bottom: none;
+        }
+        .price-table tbody tr:hover {
+            background-color: var(--light-blue);
+        }
+        .price-pill {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--dark-blue);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body>
@@ -212,12 +250,12 @@
         </div>
     </section>
 
-    {{-- Tentang Kami --}}
+    {{-- TENTANG KAMI --}}
     <section id="tentang">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-title">Tentang Kami</h2>
-                <p class="section-subtitle">Mengenal lebih deket LAUNDRIA</p>
+                <p class="section-subtitle">Mengenal lebih dekat LAUNDRIA</p>
             </div>
             <div class="row align-items-center g-4">
                 <div class="col-lg-5 text-center">
@@ -226,21 +264,20 @@
                 <div class="col-lg-7">
                     <div class="about-box">
                         <p class="mb-0" style="color: var(--text-sec); line-height: 1.8;">
-                            LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. Kami menyediakan 
-                            berbagai layanan laundry, mulai dari cuci lipat, cuci dan setrika, setrika saja, hingga perawatan bed 
+                            LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. Kami menyediakan
+                            berbagai layanan laundry, mulai dari cuci lipat, cuci dan setrika, setrika saja, hingga perawatan bed
                             cover, selimut, gorden, boneka, dan tas.
                             <br><br>
-                            Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu untuk mengurus cucian. 
+                            Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu untuk mengurus cucian.
                             Karena itu, LAUNDRIA hadir untuk membantu meringankan pekerjaan Anda agar waktu bisa digunakan untuk hal yang lebih penting.
-                            Dengan proses pengerjaan yang teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih, 
-                            rapi, dan wangi. 
+                            Dengan proses pengerjaan yang teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih,
+                            rapi, dan wangi.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 
     {{-- LAYANAN --}}
     <section id="layanan" class="bg-white">
@@ -252,7 +289,7 @@
             <div class="row g-4">
                 @forelse ($layanan as $item)
                 <div class="col-md-6 col-lg-4">
-                    <div class="p-4 h-100" d-flex-column style="background-color: var(--off-white); border: 1px solid var(--border-c); border-radius: 12px;">
+                    <div class="p-4 h-100 d-flex flex-column" style="background-color: var(--off-white); border: 1px solid var(--border-c); border-radius: 12px;">
                         <h5 style="color: var(--dark-blue); font-weight: 600;">{{ $item->nama_layanan }}</h5>
                         <p class="mb-2" style="color: var(--text-sec); font-size: 14px;">
                             Estimasi Selesai: {{ $item->estimasi }} jam
@@ -267,10 +304,10 @@
                             @elseif($item->nama_layanan == 'Setrika Saja')
                                 Untuk pakaian yang sudah dicuci, disetrika rapi agar siap digunakan.
                             @elseif($item->nama_layanan == 'Cuci Bed Cover')
-                                Perawatan khusus untuk bed cover agar tetep bersih dan nyaman digunakan.
+                                Perawatan khusus untuk bed cover agar tetap bersih dan nyaman digunakan.
                             @elseif($item->nama_layanan == 'Cuci Selimut & Gorden')
                                 Dibersihkan menyeluruh, bebas debu, dan wangi segar untuk kenyamanan rumah Anda.
-                            @elseif($item->nama_layanan == 'Cuci Boneka & Tas')
+                            @elseif($item->nama_layanan == 'Boneka & Tas')
                                 Dicuci dengan lembut, menjaga bentuk dan kualitas boneka serta tas kesayangan Anda.
                             @else
                                 Dikerjakan oleh tim profesional dengan perhatian pada setiap detail agar hasilnya memuaskan.
@@ -279,7 +316,7 @@
                         <a href="{{ route('login') }}" class="btn btn-cta btn-sm mt-auto align-self-start">Pilih Layanan</a>
                     </div>
                 </div>
-             @empty
+                @empty
                 <div class="col-12 text-center text-muted">Layanan belum tersedia.</div>
                 @endforelse
             </div>
@@ -294,23 +331,25 @@
                 <p class="section-subtitle">Harga transparan, tanpa biaya tersembunyi</p>
             </div>
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="bg-white" style="border-radius: 14px; overflow: hidden; box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);">
-                        <table class="table table-borderless mb-0">
+                <div class="col-lg-9">
+                    <div class="price-table-wrap">
+                        <table class="table mb-0 price-table">
                             <thead>
-                                <tr style="background-color: var(--dark-blue); color: #FFFFFF;">
-                                <th class="ps-4 py-3">Layanan</th>
-                                <th class="py-3">Satuan</th>
-                                <th class="text-end pe-4 py-3">Harga</th>
-                            </tr>
+                                <tr>
+                                    <th class="ps-4 py-3" style="background: var(--dark-blue); color: #FFFFFF; border: none;">Layanan</th>
+                                    <th class="py-3" style="background: var(--dark-blue); color: #FFFFFF; border: none;">Satuan</th>
+                                    <th class="text-end pe-4 py-3" style="background: var(--dark-blue); color: #FFFFFF; border: none;">Harga</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 @foreach ($layanan as $item)
-                                <tr style="border-bottom: 1px solid var(--border-c);">
-                                    <td class="ps-4 py-3" style="color: var(--text-main); font-weight: 500;">{{ $item->nama_layanan }}</td>
-                                    <td class="py-3" style="color: var(--text-sec);">{{ $item->satuan }}</td>
-                                    <td class="text-end pe-4 py-3" style="color: var(--medium-blue); font-weight: 700;">Rp{{ number_format($item->harga, 0, ',', '.') }}</td>
-                                </tr>
+                                    <tr>
+                                        <td class="ps-4 py-3" style="color: var(--text-main); font-weight: 500;">{{ $item->nama_layanan }}</td>
+                                        <td class="py-3" style="color: var(--text-sec);">{{ $item->satuan }}</td>
+                                        <td class="text-end pe-4 py-3">
+                                            <span class="price-pill">Rp{{ number_format($item->harga, 0, ',', '.') }}</span>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -328,8 +367,9 @@
                 <p class="section-subtitle">Proses mudah dalam 4 langkah</p>
                 <p class="mb-5" style="color: var(--text-sec); text-align: center; max-width: 700px; margin: 0 auto 3rem;">
                     Kami membuat proses laundry menjadi lebih praktis, cepat, dan nyaman untuk Anda.
-                    Hanya dalam beberapa langkah, pakaian Anda akan kembali bersih, rapi, wangi, 
+                    Hanya dalam beberapa langkah, pakaian Anda akan kembali bersih, rapi, wangi,
                     dan siap digunakan.
+                </p>
             </div>
             <div class="row g-4 text-center">
                 <div class="col-md-3">
@@ -345,7 +385,7 @@
                 <div class="col-md-3">
                     <div class="step-circle">3</div>
                     <h6 style="color: var(--dark-blue); font-weight: 600;">Proses Pencucian</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian dicuci dan dirawat dengan teliti sesuai jenis layana, agar hasilnya bersih, rapi, dan wangi.</p>
+                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian dicuci dan dirawat dengan teliti sesuai jenis layanan, agar hasilnya bersih, rapi, dan wangi.</p>
                 </div>
                 <div class="col-md-3">
                     <div class="step-circle">4</div>
