@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Pelanggan\ProfileController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
@@ -47,4 +48,6 @@ Route::middleware('auth:pelanggan')->group(function () {
     Route::get('/pelanggan/dashboard', [BookingController::class, 'dashboard'])->name('pelanggan.dashboard');
     Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+    Route::get('/pelanggan/profile', [ProfileController::class, 'edit'])->name('pelanggan.profile');
+    Route::put('/pelanggan/profile', [ProfileController::class, 'update'])->name('pelanggan.profile.update');
 });
