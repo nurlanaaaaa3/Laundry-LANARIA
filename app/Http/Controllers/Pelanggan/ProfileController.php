@@ -19,7 +19,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $pelanggan = Auth::guard('pelanggan')->user();
-        
+
         $data = $request->validate([
             'nama_pelanggan' => 'required|string|max:100',
             'no_hp' => 'required|string|max:15',
@@ -36,7 +36,6 @@ class ProfileController extends Controller
 
         $pelanggan->update($data);
 
-        return back()->with('success', 'Profile berhasil diperbarui.');
-
+        return back()->with('success', 'Profil berhasil diperbarui.');
     }
 }

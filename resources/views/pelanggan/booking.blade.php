@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-p">
+    @include('pelanggan.partials.navbar')
         <div class="container-fluid px-4">
             <span class="navbar-brand mb-0">LAUNDRIA</span>
             <div>
@@ -29,7 +29,6 @@
                 </form>
             </div>
         </div>
-    </nav>
 
     <div class="container-fluid px-4 py-4">
         <h4 class="mb-3 text-center">Pesan Sekarang</h4>
