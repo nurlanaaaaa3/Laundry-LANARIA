@@ -37,7 +37,7 @@
                     </div>
                 @endif
 
-                <div class="content-card" style="max-width: 600px;">
+                <div class="content-card">
                     <form method="POST" action="{{ route('pelanggan.profile.update') }}">
                         @csrf
                         @method('PUT')

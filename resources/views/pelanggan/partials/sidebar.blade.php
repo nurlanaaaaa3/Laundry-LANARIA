@@ -103,7 +103,7 @@
             <span class="nav-dot"></span> Profil Saya
         </a>
         <a class="nav-link" href="{{ route('landing') }}#layanan">
-            <span class="nav-dot"></span> Layanan Kami
+            <span class="nav-dot"></span> Layanan LAUNDRIA
         </a>
         <a class="nav-link" href="{{ route('landing') }}">
             <span class="nav-dot"></span> Beranda Website
