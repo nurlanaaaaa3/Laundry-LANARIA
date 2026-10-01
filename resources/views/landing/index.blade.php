@@ -322,27 +322,31 @@
             <div class="text-center">
                 <h2 class="section-title">Cara Kerja</h2>
                 <p class="section-subtitle">Proses mudah dalam 4 langkah</p>
+                <p class="mb-5" style="color: var(--text-sec); text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+                    Kami membuat proses laundry menjadi lebih praktis, cepat, dan nyaman untuk Anda.
+                    Hanya dalam beberapa langkah, pakaian Anda akan kembali bersih, rapi, wangi, 
+                    dan siap digunakan.
             </div>
             <div class="row g-4 text-center">
                 <div class="col-md-3">
                     <div class="step-circle">1</div>
                     <h6 style="color: var(--dark-blue); font-weight: 600;">Pesan Sekarang</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Daftar/login lalu pilih layanan yang Anda butuhkan.</p>
+                    <p style="color: var(--text-sec); font-size: 14px;">Daftar/login lalu pilih layanan laundry yang Anda butuhkan, lalu tentukan jenis perawatan yang sesuai dengan kebutuhan pakaian Anda.</p>
                 </div>
                 <div class="col-md-3">
                     <div class="step-circle">2</div>
                     <h6 style="color: var(--dark-blue); font-weight: 600;">Antar / Jemput</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Serahkan pakaian Anda ke LAUNDRIA.</p>
+                    <p style="color: var(--text-sec); font-size: 14px;">Antarkan pakaian Anda ke LAUNDRIA untuk diproses dengan teliti, atau manfaatkan layanan jemput agar lebih praktis.</p>
                 </div>
                 <div class="col-md-3">
                     <div class="step-circle">3</div>
                     <h6 style="color: var(--dark-blue); font-weight: 600;">Proses Pencucian</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian dicuci, dikeringkan, dan dirapikan.</p>
+                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian dicuci dan dirawat dengan teliti sesuai jenis layana, agar hasilnya bersih, rapi, dan wangi.</p>
                 </div>
                 <div class="col-md-3">
                     <div class="step-circle">4</div>
-                    <h6 style="color: var(--dark-blue); font-weight: 600;">Siap Diambil</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian bersih, rapi, dan siap digunakan.</p>
+                    <h6 style="color: var(--dark-blue); font-weight: 600;">Siap Diambil / Antar</h6>
+                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian selesai dicuci dan siap diambil atau kami yang akan mengantar ke rumah Anda.</p>
                 </div>
             </div>
         </div>
@@ -373,7 +377,7 @@
                         <h6 style="color: var(--dark-blue); font-weight: 600;">Jam Operasional</h6>
                         <p class="mb-0" style="color: var(--text-sec);">Senin-Jumat, 08.00 - 20.00</p>
                         <p class="mb-0" style="color: var(--text-sec);">Sabtu, 08.00 - 18.00</p>
-                        <p class="mb-0" style="color: var(--text-sec);">Minggu, TUTUP
+                        <p class="mb-0" style="color: var(--text-sec);">Minggu, TUTUP</p>
                     </div>
                 </div>
             </div>
