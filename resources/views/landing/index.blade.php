@@ -231,7 +231,6 @@
                             Dengan proses pengerjaan yang teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih, 
                             rapi, dan wangi. LAUNDRIA berkomitmen menjadi pilihan laundry yang praktis dan terpercaya untuk menjaga pakaian serta 
                             perlengkapan Anda tetap bersih dan terawat.
-
                         </p>
                     </div>
                 </div>
@@ -359,7 +358,7 @@
             <div class="row g-4 justify-content-center text-center">
                 <div class="col-md-4">
                     <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c);">
-                        <h6 style="color: var(--dark-blue); font-weight: 600;">Nomor HP / WhatsApp</h6>
+                        <h6 style="color: var(--dark-blue); font-weight: 600;">Nomor WhatsApp</h6>
                         <p class="mb-0" style="color: var(--text-sec);">0812-3456-7890</p>
                     </div>
                 </div>
@@ -372,7 +371,9 @@
                 <div class="col-md-4">
                     <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c);">
                         <h6 style="color: var(--dark-blue); font-weight: 600;">Jam Operasional</h6>
-                        <p class="mb-0" style="color: var(--text-sec);">Setiap Hari, 08.00 - 20.00 WIB</p>
+                        <p class="mb-0" style="color: var(--text-sec);">Senin-Jumat, 08.00 - 20.00</p>
+                        <p class="mb-0" style="color: var(--text-sec);">Sabtu, 08.00 - 18.00</p>
+                        <p class="mb-0" style="color: var(--text-sec);">Minggu, TUTUP
                     </div>
                 </div>
             </div>
