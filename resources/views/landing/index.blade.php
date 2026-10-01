@@ -200,13 +200,13 @@
     <section id="beranda" class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-4 text-center text-lg-start mb-4 mb-lg-0">
+                <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
                     <h1>Laundry Profesional<br>Merawat Pakaian Anda<br>Untuk Hari yang Lebih Nyaman</h1>
                     <p class="mx-auto mx-lg-0">Kami Membantu Merawat Pakaian Anda Agar Tetap Bersih, Rapi, Segar, dan Siap Digunakan Setiap Hari.</p>
-                    <a href="{{ route('login') }}" class="btn btn-cta btn-lg px-4">Pesan Sekarang</a>
+                    <a href="#layanan" class="btn btn-cta btn-lg px-4">Lihat Layanan</a>
                 </div>
-                <div class="col-lg-8">
-                    <img src="{{ asset('images/laundryservices.jpg') }}" alt="LAUNDRIA" class="img-fluid rounded-4 shadow w-100">
+                <div class="col-lg-6">
+                    <img src="{{ asset('images/laundryservices.jpg') }}" alt="LAUNDRIA" class="img-fluid rounded-4 shadow">
                 </div>
             </div>
         </div>
@@ -223,20 +223,15 @@
                 <div class="col-lg-8">
                     <div class="about-box text-center">
                         <p class="mb-0" style="color: var(--text-sec); line-height: 1.8;">
-                            LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. Kami
-                            menyediakan berbagai layanan laundry, mulai dari cuci lipat, cuci dan setrika, setrika saja,
-                            hingga perawatan perlengkapan rumah tangga seperti bed cover, selimut, gorden, boneka, dan tas.
+                            LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. Kami menyediakan 
+                            berbagai layanan laundry, mulai dari cuci lipat, cuci dan setrika, setrika saja, hingga perawatan bed 
+                            cover, selimut, gorden, boneka, dan tas.
+                            Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu untuk mengurus cucian. 
+                            Karena itu, LAUNDRIA hadir untuk membantu meringankan pekerjaan Anda agar waktu bisa digunakan untuk hal yang lebih penting.
+                            Dengan proses pengerjaan yang teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih, 
+                            rapi, dan wangi. LAUNDRIA berkomitmen menjadi pilihan laundry yang praktis dan terpercaya untuk menjaga pakaian serta 
+                            perlengkapan Anda tetap bersih dan terawat.
 
-                            Kami memahami bahwa kesibukan sehari-hari sering kali membuat Anda tidak memiliki banyak waktu
-                            untuk mengurus cucian. Oleh karena itu, LAUNDRIA hadir sebagai solusi untuk membantu meringankan
-                            pekerjaan Anda, sehingga waktu yang ada bisa digunakan untuk hal-hal yang lebih penting.
-
-                            Dengan proses pengerjaan yang teratur dan perhatian pada setiap pesanan, kami berusaha memberikan
-                            hasil yang bersih, rapi, wangi, dan nyaman digunakan. Kami juga mengutamakan pelayanan yang ramah
-                            serta penanganan yang teliti agar setiap pakaian dan barang pelanggan mendapatkan perawatan yang sesuai.
-
-                            LAUNDRIA berkomitmen untuk menjadi pilihan laundry yang praktis dan terpercaya, membantu menjaga pakaian
-                            tetap bersih dan terawat, sekaligus membuat keseharian Anda menjadi lebih mudah.
                         </p>
                     </div>
                 </div>
@@ -244,32 +239,80 @@
         </div>
     </section>
 
-    {{-- LAYANAN & HARGA --}}
+    {{-- LAYANAN --}}
     <section id="layanan" class="bg-white">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-title">Layanan Kami</h2>
                 <p class="section-subtitle">Berbagai pilihan layanan laundry sesuai kebutuhan Anda</p>
             </div>
-            <div class="row g-4" id="harga">
+            <div class="row g-4">
                 @forelse ($layanan as $item)
-                    <div class="col-md-6 col-lg-4">
-                        <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c); border-radius: 12px;">
-                            <h5 style="color: var(--dark-blue); font-weight: 600;">{{ $item->nama_layanan }}</h5>
-                            <p class="mb-2" style="color: var(--medium-blue); font-size: 22px; font-weight: 700;">
-                                Rp{{ number_format($item->harga, 0, ',', '.') }}<span style="font-size: 14px; color: var(--text-sec); font-weight: 400;">/{{ $item->satuan }}</span>
-                            </p>
-                            <p class="mb-0" style="color: var(--text-sec); font-size: 14px;">
-                                Estimasi selesai: {{ $item->estimasi }} jam
-                            </p>
+                <div class="col-md-6 col-lg-4">
+                    <div class="p-4 h-100" d-flex-column style="background-color: var(--off-white); border: 1px solid var(--border-c); border-radius: 12px;">
+                        <h5 style="color: var(--dark-blue); font-weight: 600;">{{ $item->nama_layanan }}</h5>
+                        <p class="mb-2" style="color: var(--text-sec); font-size: 14px;">
+                            Estimasi Selesai: {{ $item->estimasi }} jam
+                        </p>
+                        <p class="mb-3" style="color: var(--text-sec); font-size: 13px;">
                             @if ($item->keterangan)
-                                <p class="mt-2 mb-0" style="color: var(--text-sec); font-size: 13px;">{{ $item->keterangan }}</p>
+                                {{ $item->keterangan }}
+                            @elseif ($item->nama_layanan == 'Cuci Lipat')
+                                Cocok untuk pakaian harian, dicuci bersih dan dilipat rapi.
+                            @elseif ($item->nama_layanan == 'Cuci & Setrika')
+                                Pakaian dicuci bersih, dikeringkan, disetrika halus, dan siap pakai.
+                            @elseif($item->nama_layanan == 'Setrika Saja')
+                                Untuk pakaian yang sudah dicuci, disetrika rapi agar siap digunakan.
+                            @elseif($item->nama_layanan == 'Cuci Bed Cover')
+                                Perawatan khusus untuk bed cover agar tetep bersih dan nyaman digunakan.
+                            @elseif($item->nama_layanan == 'Cuci Selimut & Gorden')
+                                Dibersihkan menyeluruh, bebas debu, dan wangi segar untuk kenyamanan rumah Anda.
+                            @elseif($item->nama_layanan == 'Cuci Boneka & Tas')
+                                Dicuci dengan lembut, menjaga bentuk dan kualitas boneka serta tas kesayangan Anda.
+                            @else
+                                Dikerjakan oleh tim profesional dengan perhatian pada setiap detail agar hasilnya memuaskan.
                             @endif
-                        </div>
+                        </p>
+                        <a href="{{ route('login') }}" class="btn btn-cta btn-sm mt-auto align-self-start">Pilih Layanan</a>
                     </div>
-                @empty
-                    <div class="col-12 text-center text-muted">Layanan belum tersedia.</div>
+                </div>
+             @empty
+                <div class="col-12 text-center text-muted">Layanan belum tersedia.</div>
                 @endforelse
+            </div>
+        </div>
+    </section>
+
+    {{-- HARGA --}}
+    <section id="harga" style="background-color: var(--light-blue);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Daftar Harga</h2>
+                <p class="section-subtitle">Harga transparan, tanpa biaya tersembunyi</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="bg-white" style="border-radius: 14px; overflow: hidden; box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);">
+                        <table class="table table-borderless mb-0">
+                            <thead>
+                                <tr style="background-color: var(--dark-blue); color: #FFFFFF;">
+                                <th class="ps-4 py-3">Layanan</th>
+                                <th class="py-3">Satuan</th>
+                                <th class="text-end pe-4 py-3">Harga</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($layanan as $item)
+                                <tr style="border-bottom: 1px solid var(--border-c);">
+                                    <td class="ps-4 py-3" style="color: var(--text-main); font-weight: 500;">{{ $item->nama_layanan }}</td>
+                                    <td class="py-3" style="color: var(--text-sec);">{{ $item->satuan }}</td>
+                                    <td class="text-end pe-4 py-3" style="color: var(--medium-blue); font-weight: 700;">Rp{{ number_format($item->harga, 0, ',', '.') }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
