@@ -206,37 +206,41 @@
                     <a href="#layanan" class="btn btn-cta btn-lg px-4">Lihat Layanan</a>
                 </div>
                 <div class="col-lg-6">
-                    <img src="{{ asset('images/laundryservices.jpg') }}" alt="LAUNDRIA" class="img-fluid rounded-4 shadow">
+                    <img src="{{ asset('images/laundryservices.jpg') }}" alt="LAUNDRIA" class="img-fluid rounded-4 shadow" style="max-height: 400px; width: 100%; object-fit: cover;">
                 </div>
             </div>
         </div>
     </section>
 
-    {{-- TENTANG KAMI --}}
+    {{-- Tentang Kami --}}
     <section id="tentang">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-title">Tentang Kami</h2>
-                <p class="section-subtitle">Mengenal lebih dekat LAUNDRIA</p>
+                <p class="section-subtitle">Mengenal lebih deket LAUNDRIA</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="about-box text-center">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-5 text-center">
+                    <img src="{{ asset('images/laundry.jpg') }}" alt="Tentang LAUNDRIA" class="img-fluid rounded-4 shadow" style="max-height: 400px; object-fit: cover;">
+                </div>
+                <div class="col-lg-7">
+                    <div class="about-box">
                         <p class="mb-0" style="color: var(--text-sec); line-height: 1.8;">
                             LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. Kami menyediakan 
                             berbagai layanan laundry, mulai dari cuci lipat, cuci dan setrika, setrika saja, hingga perawatan bed 
                             cover, selimut, gorden, boneka, dan tas.
+                            <br><br>
                             Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu untuk mengurus cucian. 
                             Karena itu, LAUNDRIA hadir untuk membantu meringankan pekerjaan Anda agar waktu bisa digunakan untuk hal yang lebih penting.
                             Dengan proses pengerjaan yang teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih, 
-                            rapi, dan wangi. LAUNDRIA berkomitmen menjadi pilihan laundry yang praktis dan terpercaya untuk menjaga pakaian serta 
-                            perlengkapan Anda tetap bersih dan terawat.
+                            rapi, dan wangi. 
                         </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     {{-- LAYANAN --}}
     <section id="layanan" class="bg-white">
