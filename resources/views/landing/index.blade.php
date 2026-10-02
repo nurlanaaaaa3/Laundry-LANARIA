@@ -138,20 +138,48 @@
             border-color: var(--main-blue) !important;
         }
 
-        /* CARA KERJA */
-        .step-circle {
-            width: 64px;
-            height: 64px;
+            /* CARA KERJA - KARTU PREMIUM */
+        .step-card {
+            background: #FFFFFF;
+            border: 1px solid var(--border-c);
+            border-radius: 16px;
+            padding: 36px 24px 28px;
+            text-align: center;
+            height: 100%;
+            position: relative;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+        }
+        .step-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 34px rgba(6, 59, 112, 0.14);
+            border-color: var(--main-blue);
+        }
+        .step-badge {
+            width: 48px;
+            height: 48px;
             background: linear-gradient(135deg, var(--main-blue), var(--medium-blue));
             color: #FFFFFF;
             border-radius: 50%;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 16px;
+            margin: -58px auto 18px;
             box-shadow: 0 8px 20px rgba(7, 84, 154, 0.3);
+            border: 4px solid var(--off-white);
+        }
+        .step-card h6 {
+            color: var(--dark-blue);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .step-card p {
+            color: var(--text-sec);
+            font-size: 13.5px;
+            line-height: 1.7;
+            margin-bottom: 0;
         }
 
         /* KONTAK */
@@ -365,32 +393,40 @@
             <div class="text-center">
                 <h2 class="section-title">Cara Kerja</h2>
                 <p class="section-subtitle">Proses mudah dalam 4 langkah</p>
-                <p class="mb-5" style="color: var(--text-sec); text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+                <p style="color: var(--text-sec); text-align: center; max-width: 700px; margin: 0 auto 3rem;">
                     Kami membuat proses laundry menjadi lebih praktis, cepat, dan nyaman untuk Anda.
                     Hanya dalam beberapa langkah, pakaian Anda akan kembali bersih, rapi, wangi,
                     dan siap digunakan.
                 </p>
             </div>
-            <div class="row g-4 text-center">
-                <div class="col-md-3">
-                    <div class="step-circle">1</div>
-                    <h6 style="color: var(--dark-blue); font-weight: 600;">Pesan Sekarang</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Daftar/login lalu pilih layanan laundry yang Anda butuhkan, lalu tentukan jenis perawatan yang sesuai dengan kebutuhan pakaian Anda.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card">
+                        <div class="step-badge">1</div>
+                        <h6>Pesan Sekarang</h6>
+                        <p>Daftar/login lalu pilih layanan laundry yang Anda butuhkan, lalu tentukan jenis perawatan yang sesuai.</p>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="step-circle">2</div>
-                    <h6 style="color: var(--dark-blue); font-weight: 600;">Antar / Jemput</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Antarkan pakaian Anda ke LAUNDRIA untuk diproses dengan teliti, atau manfaatkan layanan jemput agar lebih praktis.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card">
+                        <div class="step-badge">2</div>
+                        <h6>Antar / Jemput</h6>
+                        <p>Antarkan pakaian Anda ke LAUNDRIA untuk diproses dengan teliti, atau manfaatkan layanan jemput agar lebih praktis.</p>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="step-circle">3</div>
-                    <h6 style="color: var(--dark-blue); font-weight: 600;">Proses Pencucian</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian dicuci dan dirawat dengan teliti sesuai jenis layanan, agar hasilnya bersih, rapi, dan wangi.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card">
+                        <div class="step-badge">3</div>
+                        <h6>Proses Pencucian</h6>
+                        <p>Pakaian dicuci dan dirawat dengan teliti sesuai jenis layanan, agar hasilnya bersih, rapi, dan wangi.</p>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="step-circle">4</div>
-                    <h6 style="color: var(--dark-blue); font-weight: 600;">Siap Diambil / Antar</h6>
-                    <p style="color: var(--text-sec); font-size: 14px;">Pakaian selesai dicuci dan siap diambil atau kami yang akan mengantar ke rumah Anda.</p>
+                <div class="col-md-6 col-lg-3">
+                    <div class="step-card">
+                        <div class="step-badge">4</div>
+                        <h6>Siap Diambil / Antar</h6>
+                        <p>Pakaian selesai dicuci dan siap diambil atau kami yang akan mengantar ke rumah Anda.</p>
+                    </div>
                 </div>
             </div>
         </div>
