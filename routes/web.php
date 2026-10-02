@@ -36,6 +36,8 @@ Route::prefix('admin')->group(function () {
             ->except(['show']);
 
         Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
+        Route::get('/laporan/export-excel', [LaporanController::class, 'exportExcel'])->name('admin.laporan.export-excel');
+        Route::get('/laporan/export-pdf', [LaporanController::class, 'exportPdf'])->name('admin.laporan.export-pdf');
     });
 });
 
