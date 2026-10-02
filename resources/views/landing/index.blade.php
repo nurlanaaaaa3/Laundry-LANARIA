@@ -138,7 +138,7 @@
             border-color: var(--main-blue) !important;
         }
 
-            /* CARA KERJA - KARTU PREMIUM */
+        /* CARA KERJA */
         .step-card {
             background: #FFFFFF;
             border: 1px solid var(--border-c);
@@ -248,43 +248,81 @@
             background: linear-gradient(135deg, var(--dark-blue), #052C54) !important;
         }
 
-        /* TABEL HARGA PREMIUM */
-        .price-table-wrap {
+        /* Harga */
+        .hg-card {
             background: #FFFFFF;
-            border-radius: 16px;
+            border: 1px solid var(--border-c);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 34px rgba(6, 59, 112, 0.1);
+            box-shadow: 0 1px 2px rgba(6, 59, 112, 0.04), 0 20px 48px -24px rgba(6, 59, 112, 0.28);
         }
-        .price-table thead tr {
-            background: linear-gradient(90deg, var(--dark-blue), var(--main-blue));
-        }
-        .price-table thead th {
-            color: #FFFFFF;
+        .hg-group-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13.5px;
             font-weight: 600;
-            border: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            color: var(--main-blue);
+            margin: 0;
+            padding: 14px 32px;
+            background: var(--off-white);
+            border-bottom: 1px solid var(--border-c);
         }
-        .price-table tbody tr {
-            border-bottom: 1px solid #F1F5F9;
+        .hg-group + .hg-group .hg-group-title { border-top: 1px solid var(--border-c); }
+        .hg-list { list-style: none; margin: 0; padding: 0; }
+        .hg-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 32px;
             transition: background-color 0.15s ease;
         }
-        .price-table tbody tr:last-child {
-            border-bottom: none;
-        }
-        .price-table tbody tr:hover {
-            background-color: var(--light-blue);
-        }
-        .price-pill {
-            display: inline-block;
-            background-color: var(--light-blue);
+        .hg-row + .hg-row { border-top: 1px solid #F1F5F9; }
+        .hg-row:hover { background-color: var(--light-blue); }
+
+        .hg-name { margin: 0 0 2px; font-weight: 600; font-size: 1rem; line-height: 1.4; color: var(--text-main); }
+        .hg-eta { margin: 0; font-size: 13px; color: var(--text-sec); }
+
+        .hg-price {
+            text-align: right;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 1.2;
             color: var(--dark-blue);
-            font-weight: 700;
-            font-size: 14px;
-            padding: 6px 16px;
-            border-radius: 20px;
+            font-variant-numeric: tabular-nums;
         }
+        .hg-price small { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: var(--text-sec); }
+
+        .hg-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px 24px;
+            padding: 24px 32px;
+            background: linear-gradient(135deg, var(--dark-blue), var(--main-blue));
+        }
+        .hg-cta strong { display: block; color: #FFFFFF; font-weight: 600; font-size: 1.05rem; }
+        .hg-cta span { color: #DCEBFA; font-size: 14px; }
+        .hg-cta a {
+            background: #FFFFFF;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .hg-cta a:hover { background: var(--light-blue); transform: translateY(-2px); }
+        #harga a:focus-visible { outline: 3px solid #7FB0EA; outline-offset: 3px; }
+
+        @media (max-width: 575px) {
+            .hg-group-title, .hg-row, .hg-cta { padding-left: 20px; padding-right: 20px; }
+            .hg-price { font-size: 1.15rem; }
+            .hg-cta a { width: 100%; text-align: center; }
+        }
+
     </style>
 </head>
 <body>
@@ -410,27 +448,43 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-9">
-                    <div class="price-table-wrap">
-                        <table class="table mb-0 price-table">
-                            <thead>
-                                <tr>
-                                    <th class="ps-4 py-3" style="background: var(--dark-blue); color: #FFFFFF; border: none;">Layanan</th>
-                                    <th class="py-3" style="background: var(--dark-blue); color: #FFFFFF; border: none;">Satuan</th>
-                                    <th class="text-end pe-4 py-3" style="background: var(--dark-blue); color: #FFFFFF; border: none;">Harga</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($layanan as $item)
-                                    <tr>
-                                        <td class="ps-4 py-3" style="color: var(--text-main); font-weight: 500;">{{ $item->nama_layanan }}</td>
-                                        <td class="py-3" style="color: var(--text-sec);">{{ $item->satuan }}</td>
-                                        <td class="text-end pe-4 py-3">
-                                            <span class="price-pill">Rp{{ number_format($item->harga, 0, ',', '.') }}</span>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div class="hg-card">
+                        
+                        @php
+                            $labelSatuan = ['kg' => 'Harga / kilogram', 'pcs' => 'Harga / item'];
+                        @endphp
+
+                        @forelse (collect($layanan)->groupBy(fn ($i) => strtolower($i->satuan)) as $satuan => $items)
+                            <div class="hg-group">
+                                <h3 class="hg-group-title"> {{ $labelSatuan[$satuan] ?? 'Harga /' . $satuan }}</h3>
+                                <ul class="hg-list">
+                                    @foreach ($items as $item)
+                                        <li class="hg-row">
+                                            <div>
+                                                <p class="hg-name">{{ $item->nama_layanan }}</p>
+                                                @if ($item->estimasi)
+                                                    <p class="hg-eta">Estimasi selesai {{ $item->estimasi }} jam</p>
+                                                @endif
+                                            </div>
+                                            <div class="hg-price">
+                                                Rp{{ number_format($item->harga, 0, ',', '.') }}
+                                                <small>per {{ $item->satuan }}</small>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @empty
+                            <p class="text-center text-muted m-0 p-5">Daftar harga belum tersedia.</p>
+                        @endforelse
+
+                        <div class="hg-cta">
+                            <div>
+                                <strong>Siap memesan?</strong>
+                                <span>Pilih layanan dan buat pesenan Anda.</span>
+                            </div>
+                            <a href="{{ route('login') }}">Pesan Sekarang</a>
+                        </div>
                     </div>
                 </div>
             </div>
