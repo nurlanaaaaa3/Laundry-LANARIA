@@ -413,7 +413,7 @@
                 <div class="col-md-4">
                     <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c);">
                         <h6 style="color: var(--dark-blue); font-weight: 600;">Alamat</h6>
-                        <p class="mb-0" style="color: var(--text-sec);">Jl. Laundria No. 10, Surakarta, Jawa Tengah</p>
+                        <p class="mb-0" style="color: var(--text-sec);">Surakarta, Jawa Tengah</p>
                     </div>
                 </div>
                 <div class="col-md-4">
