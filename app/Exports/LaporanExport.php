@@ -3,9 +3,11 @@
 namespace App\Exports;
 
 use App\Models\Transaksi;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+
 
 class LaporanExport implements FromCollection, WithHeadings, WithMapping
 {
@@ -18,7 +20,7 @@ class LaporanExport implements FromCollection, WithHeadings, WithMapping
         $this->sampaiTanggal = $sampaiTanggal;
     }
 
-    public function collection()
+    public function collection(): Collection
     {
         return Transaksi::with(['pelanggan', 'detailTransaksi.layanan'])
             ->whereDate('tanggal_masuk', '>=', $this->dariTanggal)
