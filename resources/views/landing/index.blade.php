@@ -183,14 +183,64 @@
         }
 
         /* KONTAK */
-        #kontak .p-4 {
-            border-radius: 14px !important;
-            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
-            transition: all 0.2s ease;
+        html { scroll-padding-top: 80px;}
+
+        #kontak .kt-lead { max-width: 560px; margin: 0 auto 48px; color: var(--text-sec); line-height: 1.7;}
+        .kt-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 24px; align-items: stretch;}
+        .kt-card {
+            background:#FFFFFF; border:  1px solid var(--border-c); border-radius: 20px;
+            padding: 32px 28px; display: flex; flex-direction: column; text-align: left;
+            box-shadow: 0 1px 2px rgba(6,59,112,.04), 0 12px 32px -16px rgba(6,59,112,.18);
         }
-        #kontak .p-4:hover {
-            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-            transform: translateY(-3px);
+        .k-card h3 { font-family: 'Poppins', sans-serif; font-size: 1.05rm; font-weight: 600; color: var(--dark-blue); margin: 20px 0 10px; }
+        .kt-icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; background: var(--light-blue); color: var(--main-blue); }
+        .kt-icon svg { width: 24px; height: 24px; }
+
+        .kt-main { background: linear-gradient(160deg, var(--main-blue), var(--dark-blue)); border-color: var(--dark-blue); box-shadow: 0 24px 48px -20px rgba(6,59,112,.55); }
+        .kt-main .kt-icon { background: rgba(255,255,255,.14); color: #FFFFFF; }
+        .kt-main h3 { color: #CFE3F7; }
+        .kt-number { font-size: clamp(1.6rem, 2.6vw, 2rem); font-weight: 600; color: #FFFFFF; text-decoration: none; margin-bottom: 12px; width: max-content; max-width: 100%; }
+        .kt-number:hover { color: #FFFFFF; text-decoration: underline; text-underline-offset: 6px; }
+        .kt-note { margin: 0 0 28px; font-size: 14px; line-height: 1.7; color: #CFE3F7; }
+        .kt-btn {
+            margin-top: auto; display: inline-flex; justify-content: center; align-items: center;
+            background: #FFFFFF; color: var(--dark-blue); font-weight: 600; font-size: 15px;
+            text-decoration: none; padding: 14px 22px; border-radius: 12px;
+            transition: background-color .2s ease, transform .2s ease;
+        }
+        .kt-btn:hover { background: var(--light-blue); color: var(--dark-blue); transform: translateY(-2px); }
+
+        .kt-text { margin: 0 0 18px; color: var(--text-main); line-height: 1.6; }
+        .kt-link { margin-top: auto; color: var(--main-blue); font-weight: 500; font-size: 14px; text-decoration: underline; text-underline-offset: 5px; }
+        .kt-link:hover { color: var(--dark-blue); }
+
+        .kt-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+        .kt-status {
+            display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500;
+            padding: 6px 12px; border-radius: 999px; background: var(--off-white);
+            border: 1px solid var(--border-c); color: var(--text-sec);
+        }
+        .kt-status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+        .kt-status.is-open { color: #1F9D63; background: #EAF7F0; border-color: #CDEBDC; }
+        .kt-status.is-closed { color: #C2453D; background: #FBEEED; border-color: #F3D4D1; }
+
+        .kt-hours { list-style: none; margin: 0; padding: 0; }
+        .kt-hours li { display: flex; justify-content: space-between; gap: 12px; padding: 12px; margin: 0 -12px; border-radius: 10px; font-size: 14px; color: var(--text-sec); }
+        .kt-hours li + li { border-top: 1px solid var(--border-c); }
+        .kt-hours b { font-weight: 500; color: var(--text-main); white-space: nowrap; }
+        .kt-hours li.is-closed b { color: #C2453D; }
+        .kt-hours li.is-today { background: var(--light-blue); border-top-color: transparent; color: var(--dark-blue); font-weight: 600; }
+        .kt-hours li.is-today + li { border-top-color: transparent; }
+        .kt-hours li.is-today b { color: var(--dark-blue); font-weight: 600; }
+
+        #kontak a:focus-visible { outline: 3px solid #7FB0EA; outline-offset: 3px; border-radius: 8px; }
+
+        @media (max-width: 991px) {
+            .kt-grid { grid-template-columns: 1fr 1fr; }
+            .kt-main { grid-column: 1 / -1; }
+        }
+        @media (max-width: 575px) {
+            .kt-grid { grid-template-columns: 1fr; }
         }
 
         /* FOOTER */
@@ -439,27 +489,42 @@
                 <h2 class="section-title">Kontak Kami</h2>
                 <p class="section-subtitle">Hubungi kami untuk informasi lebih lanjut</p>
             </div>
-            <div class="row g-4 justify-content-center text-center">
-                <div class="col-md-4">
-                    <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c);">
-                        <h6 style="color: var(--dark-blue); font-weight: 600;">Nomor WhatsApp</h6>
-                        <p class="mb-0" style="color: var(--text-sec);">0812-3456-7890</p>
+            
+            <div class="kt-grid">
+
+                <article class="kt-card kt-main">
+                    <div class="kt-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M9 9.2c.3 2.4 2.4 4.6 5.8 5.6l1-1.3-1.9-1-.9.7c-.8-.4-1.6-1.2-2-2l.7-.9-1-1.9L9 9.2Z"/></svg>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c);">
-                        <h6 style="color: var(--dark-blue); font-weight: 600;">Alamat</h6>
-                        <p class="mb-0" style="color: var(--text-sec);">Surakarta, Jawa Tengah</p>
+                    <h3>Nomor WhastsApp</h3>
+                    <a class="kt-number" href="https://wa.me/6281234567890" target="_blank" rel="noopener">0812-3456-7890</a>
+                    <p class="kt-note">Cara tercepat untuk menghubungi kami. Pesan di jam operasional dibalas dalam hitungan menit.</p>
+                    <a class="kt-btn" href="https://wa.me/6281234567890?text=Halo%20LAUNDRIA%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20laundry." target="_blank" rel="noopener">Chat via WhatsApp</a>
+                </article>
+
+                <article class="kt-card">
+                    <div class="kt-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 h-100" style="background-color: var(--off-white); border: 1px solid var(--border-c);">
-                        <h6 style="color: var(--dark-blue); font-weight: 600;">Jam Operasional</h6>
-                        <p class="mb-0" style="color: var(--text-sec);">Senin-Jumat, 08.00 - 20.00</p>
-                        <p class="mb-0" style="color: var(--text-sec);">Sabtu, 08.00 - 18.00</p>
-                        <p class="mb-0" style="color: var(--text-sec);">Minggu, TUTUP</p>
+                    <h3>Alamat</h3>
+                    <p class="kt-text">Surakarta, Jawa Tengah</p>
+                    <a class="kt-link" href="https://www.google.com/maps/search/?api=1&query=Surakarta%2C+Jawa+Tengah" target="_blank" rel="noopener">Buka di Google Maps</a>
+                </article>
+
+                <article class="kt-card">
+                    <div class="kt-top">
+                        <div class="kt-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                        </div>
+                        <span id="kt-status" class="kt-status" aria-live="polite"></span>
                     </div>
-                </div>
+                    <h3>Jam Operasional</h3>
+                    <ul class="kt-hours" id="kt-hours">
+                        <li data-days="1,2,3,4,5"><span>Senin - Jumat</span><b>08.00 - 20.00</b></li>
+                        <li data-days="6"><span>Sabtu</span><b>08.00 - 18.00</b></li>
+                        <li data-days="0" class="is-closed"><span>Minggu</span><b>Tutup</b></li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
@@ -472,5 +537,24 @@
         </div>
     </footer>
 
+    <script>
+        (function () {
+            var jadwal = {0: null, 1: [8, 20], 2: [8, 20], 3: [8, 20], 4: [8, 20], 5: [8, 20], 6: [8, 18]};
+            var now  = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Jakarta'}));
+            var day  = now.getDay();
+            var hour = now.getHours() + now.getMinutes() / 60;
+            var jam  = jadwal[day];
+            var buka = jam && hour >= jam[0] && hour < jam[1];
+
+            var status = document.getElementById('kt-status');
+            if (status) {
+                status.textContent = buka ? 'Buka sekarang' : 'Tutup sekarang';
+                status.className = 'kt-status ' + (buka ? 'is-open' : 'is-closed');
+            }
+            document.querySelectorAll('#kt-hours li').forEach(function (li) {
+                if (li.dataset.days.split(',').indexOf(String(day)) > -1) li.classList.add('is-today');
+            });
+        })();
+    </script>
 </body>
 </html>
