@@ -109,5 +109,8 @@
         <a class="nav-link {{ request()->routeIs('admin.transaksi.*') ? 'active' : '' }}" href="{{ route('admin.transaksi.index') }}">
             <span class="nav-icon"></span> Transaksi
         </a>
+        <a class="nav-link {{ request()->routeIs('admin.laporan') ? 'active' : '' }}" href="{{ route('admin.laporan') }}">
+            <span class="nav-icon"></span> Laporan
+        </a>
     </nav>
 </div>

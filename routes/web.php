@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Pelanggan\ProfileController;
+use App\Http\Controllers\Admin\LaporanController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
 
@@ -33,6 +34,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('transaksi', TransaksiController::class)
             ->names('admin.transaksi')
             ->except(['show']);
+
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
     });
 });
 
