@@ -77,31 +77,79 @@
             transform: translateY(-2px);
         }
 
-        /* HERO */
+        /* Hero */
         .hero-section {
-            background: linear-gradient(180deg, var(--light-blue) 0%, #FFFFFF 100%);
-            padding: 90px 0 70px;
+            background:
+                radial-gradient(60% 80% at 85% 20%, rgba(25, 118, 184, 0.12) 0%, rgba(25, 118, 184, 0) 70%),
+                linear-gradient(180deg, var(--light-blue) 0%, #FFFFFF 100%);
+            padding: 88px 0 72px;
             position: relative;
             overflow: hidden;
         }
         .hero-section h1 {
             color: var(--dark-blue);
-            font-size: 42px;
+            font-size: clamp(2rem, 4.2vw, 3.2rem);
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.2;
+            margin: 0 0 20px;
         }
-        .hero-section p {
+        .hero-accent { display: block; color: var(--main-blue); }
+        .hero-text {
+            max-width: 520px;
+            margin: 0 0 32px;
+            font-size: 1.05rem;
+            line-height: 1.8;
             color: var(--text-sec);
-            font-size: 17px;
-            max-width: 600px;
-            margin: 20px auto 30px;
         }
-        .hero-section img {
-            box-shadow: 0 20px 50px rgba(6, 59, 112, 0.25);
-            transition: transform 0.3s ease;
+
+        .btn-hero-outline {
+            background: transparent;
+            border: 1.5px solid var(--main-blue);
+            color: var(--main-blue);
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.2s ease;
         }
-        .hero-section img:hover {
-            transform: scale(1.015);
+        .btn-hero-outline:hover {
+            background: #FFFFFF;
+            border-color: var(--dark-blue);
+            color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats { display: flex; flex-wrap: wrap; gap: 20px 0; margin-top: 44px; }
+        .hero-stat { padding: 0 28px; border-left: 1px solid #CFE0F1; text-align: left; }
+        .hero-stat:first-child { padding-left: 0; border-left: 0; }
+        .hero-stat strong { display: block; font-size: 1.3rem; font-weight: 600; line-height: 1.2; color: var(--dark-blue); }
+        .hero-stat span { font-size: 13px; color: var(--text-sec); }
+
+        .hero-photo { position: relative; }
+        .hero-photo::before {
+            content: "";
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            right: -16px;
+            bottom: -16px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, rgba(25, 118, 184, 0.18), rgba(7, 84, 154, 0.08));
+        }
+        .hero-photo img {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 5 / 4;
+            object-fit: cover;
+            border-radius: 28px;
+            box-shadow: 0 30px 60px -24px rgba(6, 59, 112, 0.45);
+        }
+ 
+        @media (max-width: 991px) {
+            .hero-section { padding: 64px 0 56px; }
+        }
+        @media (max-width: 575px) {
+            .hero-stat { padding: 0 16px; }
+            .hero-stat:first-child { padding-left: 0; }
         }
 
         section {
@@ -493,16 +541,29 @@
     {{-- HERO --}}
     <section id="beranda" class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 text-center text-lg-start mb-4 mb-lg-0">
-                    <h1>Laundry Profesional<br>Merawat Pakaian Anda<br>Untuk Hari yang Lebih Nyaman</h1>
-                    <p class="mx-auto mx-lg-0">Kami Membantu Merawat Pakaian Anda Agar Tetap Bersih, Rapi, Segar, dan Siap Digunakan Setiap Hari.</p>
-                    <a href="#layanan" class="btn btn-cta btn-lg px-4">Lihat Layanan</a>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center text-lg-start">
+                    <h1>
+                         <span class="hero-accent">Laundry Profesional</span>
+                         Merawat Pakaian Anda Untuk Hari yang Lebih Nyaman
+                    </h1>
+                    <p class="hero-text mx-auto mx-lg-0">
+                        Kami membantu merawat pakaian Anda agar tetap bersih, rapi, segar, dan siap digunakan setiap hari.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="{{ route('login') }}" class="btn btn-cta btn-lg px-4">Pesan Sekarang</a>
+                        <a href="#layanan" class="btn btn-hero-outline btn-lg px-4">Lihat Layanan</a>
+                    </div>
                 </div>
+
                 <div class="col-lg-6">
-                    <img src="{{ asset('images/laundryservices.jpg') }}" alt="LAUNDRIA" class="img-fluid rounded-4 shadow" style="max-height: 400px; width: 100%; object-fit: cover;">
+                    <div class="hero-photo">
+                        <img src="{{ asset('images/laundryservices.jpg') }}" alt="Layanan LAUNDRIA">
+                    </div>
                 </div>
-            </div>
+                
+            <div>
         </div>
     </section>
 
