@@ -243,9 +243,66 @@
             .kt-grid { grid-template-columns: 1fr; }
         }
 
-        /* FOOTER */
-        footer {
-            background: linear-gradient(135deg, var(--dark-blue), #052C54) !important;
+        /* Footer */
+        footer.ft {
+            background-color: #063B70;
+            background-image: linear-gradient(160deg, #063B70 0%, #052C54 100%);
+            color: #B9D2EC;
+            padding: 72px 0 0;
+        }
+        .ft-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            color: #FFFFFF;
+            margin: 0 0 16px;
+        }
+        .ft-desc { font-size: 14.5px; line-height: 1.8; max-width: 360px; margin: 0; }
+        .ft-title { font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #FFFFFF; margin: 0 0 20px; }
+
+        .ft-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+        .ft-links a { color: #B9D2EC; font-size: 14.5px; text-decoration: none; transition: color 0.2s ease; }
+        .ft-links a:hover { color: #FFFFFF; text-decoration: underline; text-underline-offset: 5px; }
+
+        .ft-contact { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 14px; }
+        .ft-contact li { display: flex; gap: 12px; font-size: 14.5px; line-height: 1.6; }
+        .ft-contact svg { flex: none; width: 18px; height: 18px; margin-top: 3px; color: #7FB0EA; }
+        .ft-contact a { color: #FFFFFF; font-weight: 500; text-decoration: none; }
+        .ft-contact a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+        .ft-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #FFFFFF;
+            color: var(--dark-blue);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .ft-btn:hover { background: var(--light-blue); color: var(--dark-blue); transform: translateY(-2px); }
+
+        .ft-bottom {
+            margin-top: 56px;
+            padding: 22px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 24px;
+            font-size: 13.5px;
+            color: #9DBCDD;
+        }
+        .ft-bottom a { color: #CFE3F7; text-decoration: none; }
+        .ft-bottom a:hover { color: #FFFFFF; }
+        .ft a:focus-visible { outline: 3px solid #7FB0EA; outline-offset: 3px; border-radius: 6px; }
+        
+        @media (max-width: 575px) {
+            .kt-grid { grid-template-columns: 1fr; }
         }
 
         /* Harga */
@@ -584,11 +641,67 @@
     </section>
 
     {{-- FOOTER --}}
-    <footer style="background-color: var(--dark-blue); color: #FFFFFF; padding: 30px 0;">
-        <div class="container text-center">
-            <h5 class="brand-font mb-2">LAUNDRIA</h5>
-            <p class="mb-0" style="color: #CBD5E1; font-size: 14px;">&copy; {{ date('Y') }} LAUNDRIA. Semua hak cipta dilindungi.</p>
-        </div>
+    <footer class="ft">
+        <div class="container">
+            <div class="row g-5">
+
+                {{-- Brand --}}
+                <div class="col-lg-4">
+                    <h2 class="ft-brand">LAUNDRIA</h2>
+                    <p class="ft-desc">Laundry profesional yang membantu merawat pakaian Anda agar tetap bersih, rapi, dan wangi,
+                        sehingga waktu Anda bisa dipakai untuk hal yang lebih penting.</p>
+                    </div>
+
+                    {{-- Menu --}}
+                    <div class="col-6 col-lg-2">
+                        <h3 class="ft-title">Menu</h3>
+                        <ul class="ft-links">
+                            <li><a href="#beranda">Beranda</a></li>
+                            <li><a href="#tentang">Tentang Kami</a></li>
+                            <li><a href="#layanan">Layanan</a></li>
+                            <li><a href="#harga">Harga</a></li>
+                            <li><a href="#cara-kerja">Cara Kerja</a></li>
+                            <li><a href="#kontak">Kontak</a></li>
+                        </ul>
+                    </div>
+                    
+                    {{-- Layanan (otomatis dari database) --}}
+                    <div class="col-6 col-lg-3">
+                        <h3 class="ft-title">Layanan</h3>
+                        <ul class="ft-links">
+                            @foreach (collect($layanan)->take(6) as $item)
+                                 <li><a href="#layanan">{{ $item->nama_layanan }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+                    {{-- Kontak + CTA --}}
+                    <div class="col-lg-3">
+                        <h3 class="ft-title">Hubungi Kami</h3>
+                        <ul class="ft-contact">
+                            <li>
+                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M9 9.2c.3 2.4 2.4 4.6 5.8 5.6l1-1.3-1.9-1-.9.7c-.8-.4-1.6-1.2-2-2l.7-.9-1-1.9L9 9.2Z"/></svg>
+                                 <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">0812-3456-7890</a>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                                <span>Surakarta, Jawa Tengah</span>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                                 <span>Senin - Jumat, 08.00 - 20.00<br>Sabtu, 08.00 - 18.00<br>Minggu, tutup</span>
+                            </li>
+                        </ul>
+                        <a href="{{ route('login') }}" class="ft-btn">Pesan Sekarang</a>
+                    </div>
+                    
+                </div>
+
+                <div class="ft-bottom">
+                     <span>&copy; {{ date('Y') }} LAUNDRIA. Semua hak cipta dilindungi.</span>
+                     <a href="#beranda">Kembali ke atas &uarr;</a>
+                </div>
+            </div>
     </footer>
 
     <script>
