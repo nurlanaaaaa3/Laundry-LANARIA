@@ -117,13 +117,96 @@
             margin-bottom: 45px;
         }
 
-        /* TENTANG KAMI */
-        .about-box {
-            background-color: var(--off-white);
+        /* Tentang Kami */
+        .ab-photo {
+            position: relative;
+            max-width: 440px;
+            min-height: 380px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        .ab-photo::before {
+            content: "";
+            position: absolute;
+            top: 28px;
+            left: 0;
+            right: 18px;
+            bottom: 0;
+            background: var(--light-blue);
+            border-radius: 28px;
+        }
+        .ab-photo img {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 18px;
+            width: calc(100% - 18px);
+            height: calc(100% - 28px);
+            object-fit: cover;
+            object-position: 50% 25%;
+            border-radius: 24px;
+            box-shadow: 0 24px 48px -20px rgba(6, 59, 112, 0.4);
+        }
+        .ab-badge {
+            position: absolute;
+            z-index: 2;
+            right: 12px;
+            bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #FFFFFF;
             border: 1px solid var(--border-c);
             border-radius: 16px;
-            padding: 34px;
-            box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+            padding: 12px 18px 12px 12px;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            box-shadow: 0 16px 32px -12px rgba(6, 59, 112, 0.3);
+        }
+        .ab-badge-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: var(--main-blue);
+            color: #FFFFFF;
+        }
+        .ab-badge-icon svg { width: 18px; height: 18px; }
+
+        .ab-lead {
+            font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+            font-weight: 700;
+            line-height: 1.3;
+            color: var(--dark-blue);
+            margin: 0 0 16px;
+        }
+        .ab-text { max-width: 560px; margin: 0 0 28px; color: var(--text-sec); line-height: 1.8; }
+        
+        .ab-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .ab-ft {
+            background: #FFFFFF;
+            border: 1px solid var(--border-c);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(6, 59, 112, 0.04), 0 10px 28px -16px rgba(6, 59, 112, 0.2);
+        }
+        .ab-ft-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--light-blue);
+            color: var(--main-blue);
+        }
+        .ab-ft-icon svg { width: 22px; height: 22px; }
+        .ab-ft-title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; color: var(--dark-blue); margin: 14px 0 6px; line-height: 1.4; }
+        .ab-ft p { margin: 0; font-size: 13.5px; line-height: 1.7; color: var(--text-sec); }
+        
+        @media (max-width: 767px) {
+            .ab-features { grid-template-columns: 1fr; }
         }
 
         /* KARTU LAYANAN */
@@ -424,30 +507,67 @@
     </section>
 
     {{-- TENTANG KAMI --}}
-    <section id="tentang">
+    <section id="tentang" style="background-color: var(--off-white);">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-title">Tentang Kami</h2>
                 <p class="section-subtitle">Mengenal lebih dekat LAUNDRIA</p>
             </div>
-            <div class="row align-items-center g-4">
-                <div class="col-lg-5 text-center">
-                    <img src="{{ asset('images/laundry.jpg') }}" alt="Tentang LAUNDRIA" class="img-fluid rounded-4 shadow" style="max-height: 400px; object-fit: cover;">
-                </div>
-                <div class="col-lg-7">
-                    <div class="about-box">
-                        <p class="mb-0" style="color: var(--text-sec); line-height: 1.8;">
-                            LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. Kami menyediakan
-                            berbagai layanan laundry, mulai dari cuci lipat, cuci dan setrika, setrika saja, hingga perawatan bed
-                            cover, selimut, gorden, boneka, dan tas.
-                            <br><br>
-                            Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu untuk mengurus cucian.
-                            Karena itu, LAUNDRIA hadir untuk membantu meringankan pekerjaan Anda agar waktu bisa digunakan untuk hal yang lebih penting.
-                            Dengan proses pengerjaan yang teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih,
-                            rapi, dan wangi.
-                        </p>
+
+            <div class="row align-items-stretch g-5">
+                
+                {{-- Foto --}}
+                <div class="col-lg-5">
+                    <div class="ab-photo">
+                        <img src="{{ asset('images/laundryy.jpg') }}" alt="Tentang LAUNDRIA">
+                        <div class="ab-badge">
+                            <span class="ab-badge-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></svg>
+                            </span>
+                            Bersih, Rapi, dan Wangi
+                        </div>
                     </div>
                 </div>
+
+                {{-- Teks --}}
+                <div class="col-lg-7">
+                    <p class="ab-text">
+                        LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman. 
+                        Kami menyediakan berbagai layanan laundry, mulai dari cuci lipat, cuci dan 
+                        setrika, setrika saja, hingga perawatan bed cover, selimut, gorden, boneka, dan tas.
+                        <br></br>
+                        Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu 
+                        untuk mengurus cucian. Karena itu, LAUNDRIA hadir untuk membantu meringankan pekerjaan 
+                        Anda agar waktu bisa digunakan untuk hal yang lebih penting. Dengan proses pengerjaan yang 
+                        teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih, rapi, dan wangi.
+                    </p>
+
+                    <div class="ab-features">
+                        <div class="ab-ft">
+                            <div class="ab-ft-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13" r="4"/><path d="M8 7h.01M11 7h.01"/></svg>
+                            </div>
+                            <h4 class="ab-ft-title">Layanan lengkap</h4>
+                            <p>Cuci lipat, cuci dan setrika, setrika saja, hingga bed cover, selimut, gorden, karpet, boneka, tas, dan cuci sepatu.</p>
+                        </div>
+                        <div class="ab-ft">
+                            <div class="ab-ft-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg>
+                            </div>
+                            <h4 class="ab-ft-title">Proses teratur</h4>
+                            <p>Pengerjaan dilakukan secara teratur dari awal sampai cucian siap diambil.</p>
+                        </div>
+                        <div class="ab-ft">
+                            <div class="ab-ft-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01M15 9.5h.01"/></svg>
+                            </div>
+                            <h4 class="ab-ft-title">Pelayanan ramah</h4>
+                            <p>Kami siap membantu dengan ramah, mulai dari pemesanan sampai cucian kembali ke Anda.</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
             </div>
         </div>
     </section>
@@ -694,7 +814,7 @@
                         </ul>
                         <a href="{{ route('login') }}" class="ft-btn">Pesan Sekarang</a>
                     </div>
-                    
+
                 </div>
 
                 <div class="ft-bottom">
