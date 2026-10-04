@@ -112,5 +112,8 @@
         <a class="nav-link {{ request()->routeIs('admin.laporan') ? 'active' : '' }}" href="{{ route('admin.laporan') }}">
             <span class="nav-icon"></span> Laporan
         </a>
+        <a class="nav-link {{ request()->routeIs('admin.profile') ? 'active' : '' }}" href="{{ route('admin.profile') }}">
+            <span class="nav-icon"></span> Profil Admin
+        </a>
     </nav>
 </div>

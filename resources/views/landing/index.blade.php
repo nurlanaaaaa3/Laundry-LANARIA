@@ -33,9 +33,14 @@
         .navbar-laundria .navbar-brand {
             color: var(--dark-blue) !important;
             font-weight: 700;
-            font-size: 22px;
-            letter-spacing: 0.3px;
+            font-size: 28px;
+            letter-spacing: 0.5px;
         }
+
+        @media (max-width: 575px) {
+            .navbar-laundria .navbar-brand { font-size: 24px; }
+        }
+        
         .navbar-laundria .nav-link {
             color: var(--text-main) !important;
             font-weight: 500;
@@ -545,7 +550,7 @@
                 <div class="col-lg-6 text-center text-lg-start">
                     <h1>
                          <span class="hero-accent">Laundry Profesional</span>
-                         Merawat Pakaian Anda Untuk Hari yang Lebih Nyaman
+                            Merawat Pakaian Anda Untuk Hari yang Lebih Nyaman
                     </h1>
                     <p class="hero-text mx-auto mx-lg-0">
                         Kami membantu merawat pakaian Anda agar tetap bersih, rapi, segar, dan siap digunakan setiap hari.

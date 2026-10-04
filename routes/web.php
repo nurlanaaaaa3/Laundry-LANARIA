@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TransaksiController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\Pelanggan\ProfileController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\LaporanController;
 
 Route::get('/', [LandingController::class, 'index'])->name('landing');
@@ -38,6 +39,9 @@ Route::prefix('admin')->group(function () {
         Route::get('/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
         Route::get('/laporan/export-excel', [LaporanController::class, 'exportExcel'])->name('admin.laporan.export-excel');
         Route::get('/laporan/export-pdf', [LaporanController::class, 'exportPdf'])->name('admin.laporan.export-pdf');
+
+        Route::get('/profile', [AdminProfileController::class, 'edit'])->name('admin.profile');
+        Route::put('/profile', [AdminProfileController::class, 'update'])->name('admin.profile.update');
     });
 });
 
