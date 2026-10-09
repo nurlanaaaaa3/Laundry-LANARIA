@@ -23,6 +23,15 @@
             border-radius: 12px;
             padding: 32px;
         }
+        @media (max-width: 575px) {
+            .register-card {
+                max-width: 90%;
+                padding: 24px 20px;
+            }
+            .register-card h1 {
+                font-size: 20px;
+            }
+        }
         .register-card h1 {
             font-family: 'Playfair Display', serif;
             color: #063B70;

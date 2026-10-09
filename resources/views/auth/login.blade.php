@@ -22,6 +22,15 @@
             border-radius: 12px;
             padding: 32px;
         }
+        @media (max-width: 575px) {
+            .login-card {
+                max-width: 90%;
+                padding: 24px 20px;
+            }
+            .login-card h1 {
+                font-size: 20px;
+            }
+        }
         .login-card h1 {
             font-family: 'Playfair Display', serif;
             color: #063b70;

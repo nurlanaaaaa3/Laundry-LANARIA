@@ -22,6 +22,19 @@
             border-radius: 12px;
             padding: 32px;
         }
+        @media (max-width: 575px) {
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .auth-card {
+                max-width: 100%;
+                padding: 20px 16px;
+            }
+            .auth-card h1 {
+                font-size: 20px;
+            }
+        }
         .auth-card h1 {
             font-family: 'Playfair Display', serif;
             color: #063B70;
