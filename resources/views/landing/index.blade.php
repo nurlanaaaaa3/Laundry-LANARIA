@@ -31,7 +31,7 @@
             box-shadow: 0 2px 20px rgba(6, 59, 112, 0.08);
         }
         .navbar-laundria .navbar-brand {
-            color: var(--dark-blue) !important;
+            color: varn(--dark-blue) !important;
             font-weight: 700;
             font-size: 28px;
             letter-spacing: 0.5px;
@@ -39,6 +39,21 @@
 
         @media (max-width: 575px) {
             .navbar-laundria .navbar-brand { font-size: 24px; }
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                position: absolute;
+                top: 100%;
+                right: 16px;
+                width: 60%;
+                max-width: 280px;
+                background: #FFFFFF;
+                border-radius: 12px;
+                box-shadow: 0 12px 32px rgba(6, 59, 112, 0.18);
+                padding: 16px 20px;
+                margin-top: 8px;
+            }
         }
         
         .navbar-laundria .nav-link {
@@ -567,8 +582,7 @@
                         <img src="{{ asset('images/laundryservices.jpg') }}" alt="Layanan LAUNDRIA">
                     </div>
                 </div>
-                
-            <div>
+            </div>
         </div>
     </section>
 
@@ -890,6 +904,7 @@
             </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         (function () {
             var jadwal = {0: null, 1: [8, 20], 2: [8, 20], 3: [8, 20], 4: [8, 20], 5: [8, 20], 6: [8, 18]};
