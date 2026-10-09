@@ -906,6 +906,17 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        document.querySelectorAll('#navMenu .nav-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                var navMenu = document.getElementById('navMenu');
+                var bsCollapse = bootstrap.Collapse.getInstance(navMenu);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                }
+            });
+        });
+    </script>
+    <script>
         (function () {
             var jadwal = {0: null, 1: [8, 20], 2: [8, 20], 3: [8, 20], 4: [8, 20], 5: [8, 20], 6: [8, 18]};
             var now  = new Date(new Date().toLocaleString('en-US', {timeZone: 'Asia/Jakarta'}));
