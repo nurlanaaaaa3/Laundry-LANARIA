@@ -88,9 +88,79 @@
     .badge-diambil { background-color: #063B70; }
     .badge-lunas { background-color: #16A34A; }
     .badge-belum_lunas { background-color: #DC2626; }
+
+    /* Tombol menu untuk mobile */
+    .p-toggle,
+    .p-overlay {
+        display: none;
+    }
+
+    @media (max-width: 991px) {
+        .p-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 1050;
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+            overflow-y: auto;
+        }
+        .p-sidebar.open {
+            transform: translateX(0);
+            box-shadow: 0 0 40px rgba(15, 23, 42, 0.25);
+        }
+        .p-overlay {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+        }
+        .p-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .p-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 10px;
+            left: 12px;
+            z-index: 1030;
+            width: 42px;
+            height: 42px;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            color: var(--lnd-dark);
+            cursor: pointer;
+        }
+        .p-toggle svg {
+            width: 22px;
+            height: 22px;
+        }
+        .p-topbar {
+            padding: 14px 16px 14px 68px;
+        }
+    }
+    @media (max-width: 575px) {
+        .p-topbar .user-name {
+            display: none;
+        }
+    }
 </style>
 
-<div class="p-sidebar">
+<button type="button" class="p-toggle" id="pToggle" aria-label="Buka menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+<div class="p-overlay" id="pOverlay"></div>
+
+<div class="p-sidebar" id="pSidebar">
     <div class="brand">LAUNDRIA</div>
     <nav class="nav flex-column">
         <a class="nav-link {{ request()->routeIs('pelanggan.dashboard') ? 'active' : '' }}" href="{{ route('pelanggan.dashboard') }}">
@@ -110,3 +180,22 @@
         </a>
     </nav>
 </div>
+
+<script>
+    (function () {
+        var sidebar = document.getElementById('pSidebar');
+        var overlay = document.getElementById('pOverlay');
+        var toggle  = document.getElementById('pToggle');
+
+        function setOpen(open) {
+            sidebar.classList.toggle('open', open);
+            overlay.classList.toggle('show', open);
+        }
+        toggle.addEventListener('click', function () {
+            setOpen(!sidebar.classList.contains('open'));
+        });
+        overlay.addEventListener('click', function () {
+            setOpen(false);
+        });
+    })();
+</script>

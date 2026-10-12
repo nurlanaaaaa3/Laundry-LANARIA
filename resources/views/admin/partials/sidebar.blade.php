@@ -92,9 +92,79 @@
         background-color: #FECACA;
         color: #B91C1C;
     }
+
+    /* Tombol menu untuk mobile */
+    .sidebar-toggle,
+    .sidebar-overlay {
+        display: none;
+    }
+
+    @media (max-width: 991px) {
+        .admin-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            z-index: 1050;
+            transform: translateX(-100%);
+            transition: transform 0.25s ease;
+            overflow-y: auto;
+        }
+        .admin-sidebar.open {
+            transform: translateX(0);
+            box-shadow: 0 0 40px rgba(15, 23, 42, 0.25);
+        }
+        .sidebar-overlay {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.45);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s ease;
+        }
+        .sidebar-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .sidebar-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 10px;
+            left: 12px;
+            z-index: 1030;
+            width: 42px;
+            height: 42px;
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            color: var(--lnd-dark);
+            cursor: pointer;
+        }
+        .sidebar-toggle svg {
+            width: 22px;
+            height: 22px;
+        }
+        .admin-topbar {
+            padding: 14px 16px 14px 68px;
+        }
+    }
+    @media (max-width: 575px) {
+        .admin-topbar .text-end {
+            display: none;
+        }
+    }
 </style>
 
-<div class="admin-sidebar">
+<button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Buka menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="admin-sidebar" id="adminSidebar">
     <div class="brand">LAUNDRIA</div>
     <nav class="nav flex-column">
         <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
@@ -117,3 +187,22 @@
         </a>
     </nav>
 </div>
+
+<script>
+    (function () {
+        var sidebar = document.getElementById('adminSidebar');
+        var overlay = document.getElementById('sidebarOverlay');
+        var toggle  = document.getElementById('sidebarToggle');
+
+        function setOpen(open) {
+            sidebar.classList.toggle('open', open);
+            overlay.classList.toggle('show', open);
+        }
+        toggle.addEventListener('click', function () {
+            setOpen(!sidebar.classList.contains('open'));
+        });
+        overlay.addEventListener('click', function () {
+            setOpen(false);
+        });
+    })();
+</script>

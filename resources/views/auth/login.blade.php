@@ -2,6 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Admin - LAUNDRIA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -23,9 +24,13 @@
             padding: 32px;
         }
         @media (max-width: 575px) {
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
             .login-card {
-                max-width: 90%;
-                padding: 24px 20px;
+                max-width: 100%;
+                padding: 20px 16px;
             }
             .login-card h1 {
                 font-size: 20px;
