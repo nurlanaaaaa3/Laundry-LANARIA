@@ -11,6 +11,12 @@
         .btn-primary:hover { background-color: #063B70; border-color: #063B70; }
         .content-card { background: #FFFFFF; border: 1px solid #E5E7EB; border-radius: 14px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
         .row-layanan { background: #EAF4FC; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+        @media (max-width: 575px) {
+            .row-layanan > :nth-child(1) { flex: 0 0 100%; max-width: 100%; }
+            .row-layanan > :nth-child(2) { flex: 0 0 40%; max-width: 40%; }
+            .row-layanan > :nth-child(3) { flex: 1  0;max-width: none; }
+            .row-layanan > :nth-child(4) { flex: 0 0 auto; width: auto; }
+        }
         .total-box { background: #063B70; color: #FFFFFF; border-radius: 8px; padding: 16px; }
         .total-box .nominal { font-size: 24px; font-weight: 600; }
     </style>

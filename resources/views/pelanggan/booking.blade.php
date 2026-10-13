@@ -2,11 +2,18 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pesan Sekarang - LAUNDRIA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
         .row-layanan { background: #EAF4FC; border-radius: 8px; padding: 12px; margin-bottom: 10px; }
+        @media (max-width: 575px) {
+            .row-layanan > :nth-child(1) { flex: 0 0 100%; max-width: 100%; }
+            .row-layanan > :nth-child(2) { flex: 0 0 40%; max-width: 40%; }
+            .row-layanan > :nth-child(3) { flex: 1 1 0; max-width: none; }
+            .row-layanan > :nth-child(4) { flex: 0 0 auto; width: auto; }
+        }
         .total-box { background: #063B70; color: #FFFFFF; border-radius: 8px; padding: 16px; }
         .total-box .nominal { font-size: 24px; font-weight: 600; }
         .btn-primary { background-color: #07549A; border-color: #07549A; }
