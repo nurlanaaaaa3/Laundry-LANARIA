@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Pelanggan - LAUNDRIA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --main-blue: #07549A;
@@ -54,10 +54,11 @@
         .auth-brand {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
             color: #FFFFFF;
             text-decoration: none;
+            text-shadow: 0 2px 12px rgba(6, 59, 112, 0.7);
         }
         .auth-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; line-height: 1.3; margin: 0 0 12px; }
         .auth-desc { margin: 0; font-size: 14.5px; line-height: 1.8; color: #CFE3F7; }
