@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Transaksi extends Model
 {
@@ -29,6 +30,24 @@ class Transaksi extends Model
             'tanggal_masuk' => 'datetime',
             'tanggal_selesai' => 'datetime',
         ];
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function ($transaksi) {
+            if (empty($transaksi->kode_transaksi)) {
+                $transaksi->kode_transaksi = static::buatKode($transaksi->tanggal_masuk);
+            }
+        });
+    }
+
+    public static function buatKode(): string
+    {
+        $terakhir = (int) static::query()
+            ->selectRaw('MAX(CAST(SUBSTRING(kode_transaksi, 5) AS UNSIGNED)) as maks')
+            ->value('maks');
+
+        return 'LDR-' . str_pad($terakhir + 1, 3, '0', STR_PAD_LEFT);
     }
 
     // transaksi dimiliki oleh 1 pelanggan

@@ -22,8 +22,11 @@ class TransaksiController extends Controller
 
         $transaksi = Transaksi::with(['pelanggan', 'user'])
             ->when($keyword, function ($query, $keyword) {
-                $query->whereHas('pelanggan', function ($q) use ($keyword) {
-                    $q->where('nama_pelanggan', 'like', "%{$keyword}%");
+                $query->where(function ($w) use ($keyword) {
+                    $w->where('kode_transaksi', 'like', "%{$keyword}%")
+                      ->orWhereHas('pelanggan', function ($q) use ($keyword) {
+                          $q->where('nama_pelanggan', 'like', "%{$keyword}%");
+                      });
                 });
             })
             ->when($status, function ($query, $status) {
@@ -61,7 +64,7 @@ class TransaksiController extends Controller
             'layanan.*.jumlah' => 'required|numeric|min:0.1',
         ]);
 
-        DB::transaction(function () use ($data) {
+        $transaksi = DB::transaction(function () use ($data) {
             $total = 0;
             $detailData = [];
 
@@ -98,10 +101,12 @@ class TransaksiController extends Controller
                 $detail['id_transaksi'] = $transaksi->id_transaksi;
                 DetailTransaksi::create($detail);
             }
+
+            return $transaksi;
         });
 
         return redirect()->route('admin.transaksi.index')
-            ->with('success', 'Transaksi berhasil dibuat.');
+            ->with('success', "Transaksi {$transaksi->kode_transaksi} berhasil dibuat.");
     }
 
     /**

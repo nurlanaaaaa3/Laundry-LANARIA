@@ -18,6 +18,17 @@
         .badge-diambil { background-color: #063B70; }
         .badge-lunas { background-color: #16A34A; }
         .badge-belum_lunas { background-color: #DC2626; }
+        .kode-trx {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #EAF4FC;
+            color: #063B70;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -51,8 +62,8 @@
 
                 <div class="content-card">
                     <form method="GET" class="mb-3 d-flex gap-2 flex-wrap">
-                        <div class="input-group" style="max-width: 300px;">
-                            <input type="text" name="q" class="form-control" placeholder="Cari nama pelanggan" value="{{ $keyword }}">
+                        <div class="input-group" style="max-width: 340px;">
+                            <input type="text" name="q" class="form-control" placeholder="Cari kode atau nama pelanggan" value="{{ $keyword }}">
                             <button type="submit" class="btn btn-outline-secondary">Cari</button>
                         </div>
                         <select name="status" class="form-select" style="max-width: 200px;" onchange="this.form.submit()">
@@ -68,7 +79,7 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>Kode</th>
                                     <th>Pelanggan</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Total</th>
@@ -81,7 +92,7 @@
                             <tbody>
                                 @forelse ($transaksi as $item)
                                     <tr>
-                                        <td>{{ $item->id_transaksi }}</td>
+                                        <td><span class="kode-trx">{{ $item->kode_transaksi ?? '-' }}</span></td>
                                         <td>{{ $item->pelanggan->nama_pelanggan ?? '-' }}</td>
                                         <td>{{ $item->tanggal_masuk->format('d/m/Y H:i') }}</td>
                                         <td>Rp{{ number_format($item->total, 0, ',', '.') }}</td>

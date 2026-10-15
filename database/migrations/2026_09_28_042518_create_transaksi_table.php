@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,29 +13,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksi', function (Blueprint $table) {
-            $table->increments('id_transaksi');
-            
-            $table->unsignedInteger('id_pelanggan');
-            $table->unsignedInteger('id_user')->nullable();
+        if (! Schema::hasColumn('transaksi', 'kode_transaksi')) {
+            Schema::table('transaksi', function (Blueprint $table) {
+                $table->string('kode_transaksi', 20)->nullable()->unique()->after('id_transaksi');
+            });
+        }
 
-            $table->dateTime('tanggal_masuk');
-            $table->dateTime('tanggal_selesai')->nullable();
+        DB::table('transaksi')->update(['kode_transaksi' => null]);
 
-            $table->integer('total')->default(0);
-            $table->integer('dibayar')->default(0);
-            $table->integer('dikembalikan')->default(0);
+        $hitung = [];
 
-            $table->enum('status_pembayaran', ['belum_lunas'])->default('belum_lunas');
-            $table->enum('status_laundry', ['menunggu', 'diproses', 'selesai', 'diambil'])->default('menunggu');
+        $rows = DB::table('transaksi')
+            ->orderBy('tanggal_masuk')
+            ->orderBy('id_transaksi')
+            ->get(['id_transaksi', 'tanggal_masuk']);
+        
+        foreach ($rows as $row) {
+            $tanggal = Carbon::parse($row->tanggal_masuk ?? now());
+            $prefix = 'LDR-' . $tanggal->format('ymd') . '-';
+            $hitung[$prefix] = ($hitung[$prefix] ?? 0) + 1;
 
-            $table->text('catatan')->nullable();
-
-            $table->foreign('id_pelanggan')
-                  ->references('id_pelanggan')->on('pelanggan');
-            $table->foreign('id_user')
-                  ->references('id_user')->on('users');
-        });
+            DB::table('transaksi')
+                ->where('id_transaksi', $row->id_transaksi)
+                ->update(['kode_transaksi' => $prefix . str_pad($hitung[$prefix], 3, '0', STR_PAD_LEFT)]);
+        }
     }
 
     /**
@@ -41,6 +44,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksi');
+        if (Schema::hasColumn('transaksi', 'kode_transaksi')) {
+            Schema::table('transaksi', function (Blueprint $table) {
+                $table->dropColumn('kode_transaksi');
+            });
+        }
     }
 };
