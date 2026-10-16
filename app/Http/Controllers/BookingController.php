@@ -19,10 +19,10 @@ class BookingController extends Controller
             ->where('id_pelanggan', $pelanggan->id_pelanggan)
             ->orderByDesc('id_transaksi')
             ->get();
-            
-            return view('pelanggan.dashboard', compact('transaksi'));
+
+        return view('pelanggan.dashboard', compact('transaksi'));
     }
-    
+
     public function create()
     {
         $layanan = Layanan::where('status', 1)->orderBy('nama_layanan')->get();
@@ -79,6 +79,6 @@ class BookingController extends Controller
         });
 
         return redirect()->route('pelanggan.dashboard')
-            ->with('success', "Pesanan berhasil dibuat dengan kode {$transaksi->kode_transaksi}. Silahkan antar pakaian Anda ke LAUNDRIA dan sebutkan kode ini.");
+            ->with('success', 'Pesanan berhasil dibuat dengan nomor ' . $transaksi->kode . '. Silakan antar pakaian Anda ke LAUNDRIA.');
     }
 }
