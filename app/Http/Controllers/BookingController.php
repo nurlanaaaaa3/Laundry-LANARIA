@@ -41,7 +41,7 @@ class BookingController extends Controller
 
         $idPelanggan = Auth::guard('pelanggan')->id();
 
-        DB::transaction(function () use ($data, $idPelanggan) {
+        $transaksi = DB::transaction(function () use ($data, $idPelanggan) {
             $total = 0;
             $detailData = [];
 
@@ -74,9 +74,11 @@ class BookingController extends Controller
                 $detail['id_transaksi'] = $transaksi->id_transaksi;
                 DetailTransaksi::create($detail);
             }
+
+            return $transaksi;
         });
 
         return redirect()->route('pelanggan.dashboard')
-            ->with('success', 'Pesanan berhasil dibuat. Silakan antar pakaian Anda ke LAUNDRIA.');
+            ->with('success', "Pesanan berhasil dibuat dengan kode {$transaksi->kode_transaksi}. Silahkan antar pakaian Anda ke LAUNDRIA dan sebutkan kode ini.");
     }
 }

@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .kode-trx {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            background: #EAF4FC;
+            color: #063B70;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     <div class="p-wrapper">
@@ -38,7 +52,7 @@
                         <table class="table table-bordered mb-0">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>Kode</th>
                                     <th>Tanggal</th>
                                     <th>Layanan</th>
                                     <th>Total</th>
@@ -49,7 +63,7 @@
                             <tbody>
                                 @forelse ($transaksi as $item)
                                     <tr>
-                                        <td>{{ $item->id_transaksi }}</td>
+                                        <td><span class="kode-trx">{{ $item->kode_transaksi ?? '-' }}</span></td>
                                         <td>{{ $item->tanggal_masuk->format('d/m/Y H:i') }}</td>
                                         <td>
                                             @foreach ($item->detailTransaksi as $detail)
