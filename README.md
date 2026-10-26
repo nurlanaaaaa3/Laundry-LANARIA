@@ -1,8 +1,8 @@
-# LAUNDRIA — Sistem Laundry Online
+# LAUNDRIA — Sistem Laundry 
 
 Aplikasi web untuk mengelola layanan laundry: pelanggan dapat melihat layanan, harga, dan estimasi lalu memesan secara online, sedangkan admin mengelola pelanggan, layanan, transaksi, dan laporan. Dibangun dengan Laravel, MySQL, dan Bootstrap 5.
 
-Dibuat oleh: **Nur Lana Agustin** — XII RPL, SMKN 6 SURAKARTA
+Dibuat oleh: **Nur Lana Agustin** — **XII RPL, SMKN 6 SURAKARTA**
 
 ## Fitur
 
@@ -13,7 +13,7 @@ Dibuat oleh: **Nur Lana Agustin** — XII RPL, SMKN 6 SURAKARTA
 - Kelola layanan dan harga (tambah, edit, hapus, aktif/nonaktif) + pencarian & pagination
 - Input transaksi dengan banyak layanan, total dan kembalian dihitung otomatis
 - Kode pesanan otomatis dan berurutan (`LDR-001`, `LDR-002`, ...) pada setiap transaksi
-- Kelola status laundry (Menunggu, Diproses, Selesai, Diambil) dan status pembayaran, "Lunas" ditolak jika pembayaran kurang
+- Kelola status laundry (Menunggu, Diproses, Selesai, Diambil) dan status pembayaran — "Lunas" ditolak jika pembayaran kurang
 - Filter transaksi berdasarkan status, cari berdasarkan kode pesanan atau nama pelanggan
 - Laporan per rentang tanggal: rekap pendapatan, export **Excel** dan **PDF**
 - Profil admin (ubah nama, username, password)
@@ -178,17 +178,35 @@ Catatan: `harga` di `detail_transaksi` menyimpan harga saat transaksi dibuat, se
 
 ## Screenshot
 
-| Landing Page | Dashboard Admin |
+### Pelanggan
+
+| Landing Page | Login Pelanggan |
 |---|---|
-| ![Landing](docs/landing.png) | ![Dashboard Admin](docs/dashboard-admin.png) |
+| ![Landing](docs/landing.png) | ![Login Pelanggan](docs/login-pelanggan.png) |
+
+| Pesan Sekarang | Dashboard Pelanggan |
+|---|---|
+| ![Booking](docs/booking.png) | ![Dashboard Pelanggan](docs/dashboard-pelanggan.png) |
+
+### Admin
+
+| Login Admin | Dashboard Admin |
+|---|---|
+| ![Login Admin](docs/login-admin.png) | ![Dashboard Admin](docs/dashboard-admin.png) |
 
 | Transaksi | Laporan |
 |---|---|
 | ![Transaksi](docs/transaksi.png) | ![Laporan](docs/laporan.png) |
 
-| Pesan Sekarang | Dashboard Pelanggan |
+### Tampilan HP
+
+| Landing Page di HP | Dashboard Admin di HP |
 |---|---|
-| ![Booking](docs/booking.png) | ![Dashboard Pelanggan](docs/dashboard-pelanggan.png) |
+| ![Landing HP](docs/landing-hp.png) | ![Dashboard Admin HP](docs/dashboard-admin-hp.png) |
+
+| Dashboard Pelanggan di HP | Riwayat Pesanan di HP |
+|---|---|
+| ![Dashboard Pelanggan HP](docs/dashboard-pelanggan-hp.png) | ![Riwayat Pesanan HP](docs/riwayat-pesanan-hp.png) |
 
 ## Keamanan
 
@@ -200,11 +218,9 @@ Project ini dijalankan secara lokal (Laragon/XAMPP). Jika ingin online, hosting 
 
 ## Naskah Video Demo (2–3 menit)
 
-Link video: **[tempel link video di sini]**
-
 **[0:00 – 0:15] Opening**
 
-"Halo, perkenalkan saya Nur Lana Agustin, siswa [kelas] dari [nama SMK]. Saya akan mendemonstrasikan LAUNDRIA, sistem laundry online yang saya bangun menggunakan Laravel, MySQL, dan Bootstrap 5."
+"Halo, perkenalkan kami dari kelompok XII RPL SMKN 6 Surakarta. Saya Nur Lana Agustin bersama Athalia Calya Fitriani dan Kayla Ida Hakim Putri. Kami akan mendemonstrasikan LAUNDRIA, sistem laundry online yang kami bangun menggunakan Laravel, MySQL, dan Bootstrap 5."
 
 **[0:15 – 0:40] Landing Page**
 
@@ -231,4 +247,4 @@ Link video: **[tempel link video di sini]**
 "Demikian demo singkat LAUNDRIA. Sistem ini menerapkan password hashing, Eloquent ORM yang memakai prepared statement, validasi input, token CSRF, dan guard login terpisah untuk admin dan pelanggan. Terima kasih."
 
 ---
-Dibuat untuk project UKK — SMK
+Dibuat untuk project UKK RPL - SMKN 6 SURAKARTA

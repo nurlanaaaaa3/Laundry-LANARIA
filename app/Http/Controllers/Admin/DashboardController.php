@@ -19,13 +19,19 @@ class DashboardController extends Controller
 
         $totalPendapatan = Transaksi::where('status_pembayaran', 'lunas')->sum('total');
 
+        $transaksiTerbaru = Transaksi::with('pelanggan')
+            ->latest('tanggal_masuk')
+            ->take(5)
+            ->get();
+
         return view('admin.dashboard', compact(
             'jumlahPelanggan',
             'jumlahTransaksi',
             'transaksiMenunggu',
             'transaksiDiproses',
             'transaksiSelesai',
-            'totalPendapatan'
+            'totalPendapatan',
+            'transaksiTerbaru'
         ));
     }
 }

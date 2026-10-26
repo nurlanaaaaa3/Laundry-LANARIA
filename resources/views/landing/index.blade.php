@@ -33,12 +33,12 @@
         .navbar-laundria .navbar-brand {
             color: var(--dark-blue) !important;
             font-weight: 700;
-            font-size: 28px;
+            font-size: 36px;
             letter-spacing: 0.5px;
         }
 
         @media (max-width: 575px) {
-            .navbar-laundria .navbar-brand { font-size: 24px; }
+            .navbar-laundria .navbar-brand { font-size: 30px; }
         }
 
         @media (max-width: 991px) {
@@ -46,13 +46,13 @@
                 position: absolute;
                 top: 100%;
                 right: 16px;
-                width: 60%;
-                max-width: 280px;
+                width: auto;
+                max-width: 220px;
                 background: #FFFFFF;
-                border-radius: 12px;
-                box-shadow: 0 12px 32px rgba(6, 59, 112, 0.18);
-                padding: 16px 20px;
-                margin-top: 8px;
+                border-radius: 10px;
+                box-shadow: 0 8px 24px rgba(6, 59, 112, 0.13);
+                padding: 10px 14px;
+                margin-top: 6px;
             }
         }
 
@@ -138,24 +138,13 @@
         }
 
         .hero-photo { position: relative; }
-        .hero-photo::before {
-            content: "";
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            right: -16px;
-            bottom: -16px;
-            border-radius: 32px;
-            background: linear-gradient(135deg, rgba(25, 118, 184, 0.18), rgba(7, 84, 154, 0.08));
-        }
         .hero-photo img {
-            position: relative;
             display: block;
             width: 100%;
             aspect-ratio: 5 / 4;
             object-fit: cover;
             border-radius: 28px;
-            box-shadow: 0 30px 60px -24px rgba(6, 59, 112, 0.45);
+            box-shadow: 0 24px 48px -20px rgba(6, 59, 112, 0.30);
         }
 
         @media (max-width: 991px) {
@@ -513,7 +502,7 @@
 <body>
 
     {{-- Navbar --}}
-    <nav class="navbar navbar-expand-lg navbar-laundria sticky-top py-3">
+    <nav class="navbar navbar-expand-lg navbar-laundria sticky-top py-2">
         <div class="container">
             <a class="navbar-brand" href="#beranda">LAUNDRIA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
