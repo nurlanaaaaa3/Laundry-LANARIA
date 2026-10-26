@@ -220,7 +220,7 @@ Project ini dijalankan secara lokal (Laragon/XAMPP). Jika ingin online, hosting 
 
 **[0:00 – 0:15] Opening**
 
-"Halo, perkenalkan kami dari kelompok XII RPL SMKN 6 Surakarta. Saya Nur Lana Agustin bersama Athalia Calya Fitriani dan Kayla Ida Hakim Putri. Kami akan mendemonstrasikan LAUNDRIA, sistem laundry online yang kami bangun menggunakan Laravel, MySQL, dan Bootstrap 5."
+"Halo, perkenalkan saya Nur Lana Agustin, siswa XII RPL dari SMKN 6 Surakarta. Saya akan mendemonstrasikan LAUNDRIA, sistem laundry online yang saya bangun menggunakan Laravel, MySQL, dan Bootstrap 5."
 
 **[0:15 – 0:40] Landing Page**
 
