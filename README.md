@@ -216,6 +216,7 @@ Password di-hash dengan bcrypt, query memakai Eloquent ORM (prepared statement),
 
 Project ini dijalankan secara lokal (Laragon/XAMPP). Jika ingin online, hosting harus mendukung PHP 8.2+, MySQL, dan Composer, serta document root diarahkan ke folder `public/`.
 
+
 ## Naskah Video Demo (2–3 menit)
 
 **[0:00 – 0:15] Opening**
