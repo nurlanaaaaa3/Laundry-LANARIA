@@ -199,3 +199,151 @@
         });
     })();
 </script>
+
+<style>
+    .toast-container-custom {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        pointer-events: none;
+    }
+    .toast-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #FFFFFF;
+        border: 1px solid #E5E7EB;
+        border-radius: 14px;
+        padding: 14px 18px;
+        min-width: 280px;
+        max-width: 360px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+        pointer-events: auto;
+        animation: toastIn 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    .toast-item::before {
+        content: "";
+        position: absolute;
+        left: 0; top: 0; bottom: 0;
+        width: 4px;
+        border-radius: 14px 0 0 14px;
+    }
+    .toast-item.toast-success::before { background: #16A34A; }
+    .toast-item.toast-error::before   { background: #DC2626; }
+    .toast-item.toast-info::before    { background: #07549A; }
+    .toast-icon {
+        width: 36px; height: 36px;
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 16px; flex-shrink: 0;
+    }
+    .toast-success .toast-icon { background: #DCFCE7; color: #16A34A; }
+    .toast-error   .toast-icon { background: #FEE2E2; color: #DC2626; }
+    .toast-info    .toast-icon { background: #EAF4FC; color: #07549A; }
+    .toast-msg { font-size: 13.5px; font-weight: 500; color: #1F2937; flex: 1; }
+    .toast-close { background: none; border: none; color: #94A3B8; font-size: 18px; cursor: pointer; padding: 0; line-height: 1; flex-shrink: 0; }
+    .toast-close:hover { color: #374151; }
+    .toast-progress {
+        position: absolute;
+        bottom: 0; left: 0;
+        height: 3px;
+        border-radius: 0 0 14px 14px;
+        animation: toastProgress 3.5s linear forwards;
+    }
+    .toast-success .toast-progress { background: #16A34A; }
+    .toast-error   .toast-progress { background: #DC2626; }
+    .toast-info    .toast-progress { background: #07549A; }
+    @keyframes toastIn {
+        from { opacity: 0; transform: translateX(40px); }
+        to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes toastOut {
+        from { opacity: 1; transform: translateX(0); }
+        to   { opacity: 0; transform: translateX(40px); }
+    }
+    @keyframes toastProgress {
+        from { width: 100%; }
+        to   { width: 0%; }
+    }
+
+    .btn-loading { position: relative; pointer-events: none; opacity: 0.8; }
+    .btn-loading::after {
+        content: "";
+        display: inline-block;
+        width: 14px; height: 14px;
+        border: 2px solid rgba(255,255,255,0.4);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+        margin-left: 8px;
+        vertical-align: middle;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+
+<div class="toast-container-custom" id="toastContainer"></div>
+
+@if(session('success'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        showToast('{{ addslashes(session('success')) }}', 'success');
+    });
+</script>
+@endif
+@if(session('error'))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        showToast('{{ addslashes(session('error')) }}', 'error');
+    });
+</script>
+@endif
+
+<script>
+function showToast(msg, type = 'success') {
+    const icons = {
+        success: '<i class="bi bi-check-circle-fill"></i>',
+        error:   '<i class="bi bi-x-circle-fill"></i>',
+        info:    '<i class="bi bi-info-circle-fill"></i>',
+    };
+    const container = document.getElementById('toastContainer');
+    const el = document.createElement('div');
+    el.className = `toast-item toast-${type}`;
+    el.innerHTML = `
+        <div class="toast-icon">${icons[type] || icons.info}</div>
+        <div class="toast-msg">${msg}</div>
+        <button class="toast-close" onclick="removeToast(this.parentElement)">&times;</button>
+        <div class="toast-progress"></div>
+    `;
+    container.appendChild(el);
+    setTimeout(() => removeToast(el), 3500);
+}
+
+function removeToast(el) {
+    if (!el || !el.parentElement) return;
+    el.style.animation = 'toastOut 0.3s ease forwards';
+    setTimeout(() => el.remove(), 300);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('form').forEach(function (form) {
+        form.addEventListener('submit', function () {
+            const btn = form.querySelector('button[type="submit"], .btn-simpan, .btn-kirim');
+            if (btn) {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = originalText.replace(/<i[^>]*><\/i>/g, '').trim() + ' Menyimpan...';
+                btn.classList.add('btn-loading');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('btn-loading');
+                }, 8000);
+            }
+        });
+    });
+});
+</script>

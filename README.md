@@ -204,9 +204,9 @@ Catatan: `harga` di `detail_transaksi` menyimpan harga saat transaksi dibuat, se
 |---|---|
 | ![Landing HP](docs/landing-hp.png) | ![Dashboard Admin HP](docs/dashboard-admin-hp.png) |
 
-| Dashboard Pelanggan di HP | Riwayat Pesanan di HP |
+| Dashboard Pelanggan di HP | Pesan Sekarang di HP |
 |---|---|
-| ![Dashboard Pelanggan HP](docs/dashboard-pelanggan-hp.png) | ![Riwayat Pesanan HP](docs/riwayat-pesanan-hp.png) |
+| ![Dashboard Pelanggan HP](docs/dashboard-pelanggan-hp.png) | ![Pesan Sekarang HP](docs/booking-hp.png) |
 
 ## Keamanan
 
