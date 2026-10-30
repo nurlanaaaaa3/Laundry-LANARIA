@@ -332,9 +332,10 @@ function removeToast(el) {
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('form').forEach(function (form) {
+        if (form.action.includes('logout')) return;
         form.addEventListener('submit', function () {
             const btn = form.querySelector('button[type="submit"], .btn-simpan, .btn-kirim');
-            if (btn) {
+            if (btn && !btn.classList.contains('btn-logout-p')) {
                 const originalText = btn.innerHTML;
                 btn.innerHTML = originalText.replace(/<i[^>]*><\/i>/g, '').trim() + ' Menyimpan...';
                 btn.classList.add('btn-loading');
