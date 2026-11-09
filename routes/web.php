@@ -56,9 +56,11 @@ Route::post('/logout', [PelangganAuthController::class, 'logout'])->name('logout
 Route::get('/logout', fn() => redirect('/login'));
 
 Route::middleware('auth:pelanggan')->group(function () {
-    Route::get('/pelanggan/dashboard', [BookingController::class, 'dashboard'])->name('pelanggan.dashboard');
+    Route::get('/user/dashboard', [BookingController::class, 'dashboard'])->name('pelanggan.dashboard');
+    Route::get('/user/lacak', [BookingController::class, 'lacakForm'])->name('pelanggan.lacak.form');
+    Route::get('/user/lacak/{kode}', [BookingController::class, 'lacak'])->name('pelanggan.lacak');
     Route::get('/booking', [BookingController::class, 'create'])->name('booking.create');
     Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
-    Route::get('/pelanggan/profile', [ProfileController::class, 'edit'])->name('pelanggan.profile');
-    Route::put('/pelanggan/profile', [ProfileController::class, 'update'])->name('pelanggan.profile.update');
+    Route::get('/user/profile', [ProfileController::class, 'edit'])->name('pelanggan.profile');
+    Route::put('/user/profile', [ProfileController::class, 'update'])->name('pelanggan.profile.update');
 });

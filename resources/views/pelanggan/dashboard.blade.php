@@ -297,13 +297,13 @@
                                     <th>Total</th>
                                     <th>Pembayaran</th>
                                     <th>Status</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse ($transaksi as $item)
                                 <tr>
-                                    <td><span class="kode-trx">{{ $item->kode_transaksi ?? '-' }}</span></td>
-                                    <td>{{ $item->tanggal_masuk->format('d M Y') }}<br>
+                                    <td><span class="kode-trx">{{ $item->kode_transaksi ?? '-' }}</span></td>                                    <td>{{ $item->tanggal_masuk->format('d M Y') }}<br>
                                         <span style="font-size:11.5px; color:#94A3B8;">{{ $item->tanggal_masuk->format('H:i') }}</span>
                                     </td>
                                     <td>
@@ -336,10 +336,16 @@
                                             <span class="badge-pill badge-diambil">Diambil</span>
                                         @endif
                                     </td>
+                                    <td>
+                                        <a href="{{ route('pelanggan.lacak', $item->kode_transaksi) }}"
+                                            style="background:#EAF4FC;color:#07549A;border:1px solid #CBE5F7;border-radius:7px;font-size:12px;font-weight:600;padding:5px 12px;text-decoration:none;white-space:nowrap;">
+                                            <i class="bi bi-search me-1"></i>Lacak
+                                        </a>
+                                    </td>
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="6" class="text-center py-5">
+                                    <td colspan="7" class="text-center py-5">
                                         <i class="bi bi-inbox" style="font-size:32px; color:#CBD5E1;"></i>
                                         <p class="text-muted mt-2 mb-0" style="font-size:13px;">Belum ada pesanan.</p>
                                         <a href="{{ route('booking.create') }}" class="btn btn-sm mt-2"

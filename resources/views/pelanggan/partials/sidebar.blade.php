@@ -169,6 +169,9 @@
         <a class="nav-link {{ request()->routeIs('booking.create') ? 'active' : '' }}" href="{{ route('booking.create') }}">
             <span class="nav-dot"></span> Pesan Sekarang
         </a>
+        <a class="nav-link {{ request()->routeIs('pelanggan.lacak') ? 'active' : '' }}" href="{{ route('pelanggan.lacak.form') }}">
+            <span class="nav-dot"></span> Lacak Pesanan
+        </a>
         <a class="nav-link {{ request()->routeIs('pelanggan.profile') ? 'active' : '' }}" href="{{ route('pelanggan.profile') }}">
             <span class="nav-dot"></span> Profil Saya
         </a>

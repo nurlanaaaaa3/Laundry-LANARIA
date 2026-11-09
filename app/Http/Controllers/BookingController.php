@@ -11,6 +11,26 @@ use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
+    public function lacakForm()
+    {
+        $pelanggan = Auth::guard('pelanggan')->user();
+        $transaksi = Transaksi::where('id_pelanggan', $pelanggan->id_pelanggan)
+            ->orderByDesc('id_transaksi')->get();
+        return view('pelanggan.lacak-form', compact('transaksi'));
+    }
+
+    public function lacak($kode)
+    {
+        $pelanggan = Auth::guard('pelanggan')->user();
+
+        $transaksi = Transaksi::with('detailTransaksi.layanan')
+            ->where('kode_transaksi', $kode)
+            ->where('id_pelanggan', $pelanggan->id_pelanggan)
+            ->firstOrFail();
+
+        return view('pelanggan.lacak', compact('transaksi'));
+    }
+
     public function dashboard()
     {
         $pelanggan = Auth::guard('pelanggan')->user();
