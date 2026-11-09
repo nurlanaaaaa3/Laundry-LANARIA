@@ -20,6 +20,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('admin.login');
     Route::post('/login', [LoginController::class, 'login'])->name('admin.login.submit');
     Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', fn() => redirect('/admin/login'));
 
     Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -52,6 +53,7 @@ Route::post('/register', [PelangganAuthController::class, 'register'])->name('re
 Route::get('/login', [PelangganAuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [PelangganAuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [PelangganAuthController::class, 'logout'])->name('logout');
+Route::get('/logout', fn() => redirect('/login'));
 
 Route::middleware('auth:pelanggan')->group(function () {
     Route::get('/pelanggan/dashboard', [BookingController::class, 'dashboard'])->name('pelanggan.dashboard');
