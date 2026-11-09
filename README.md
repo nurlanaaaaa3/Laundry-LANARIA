@@ -202,11 +202,11 @@ Catatan: `harga` di `detail_transaksi` menyimpan harga saat transaksi dibuat, se
 
 | Landing Page di HP | Dashboard Admin di HP |
 |---|---|
-| ![Landing HP](docs/landing-hp.png) | ![Dashboard Admin HP](docs/dashboard-admin-hp.png) |
+| <img src="docs/landing-hp.jpeg" width="250"> | <img src="docs/dashboard-admin-hp.jpeg" width="250"> |
 
 | Dashboard Pelanggan di HP | Pesan Sekarang di HP |
 |---|---|
-| ![Dashboard Pelanggan HP](docs/dashboard-pelanggan-hp.png) | ![Pesan Sekarang HP](docs/booking-hp.png) |
+| <img src="docs/dashboard-pelanggan-hp.jpeg" width="250"> | <img src="docs/booking-hp.jpeg" width="250"> |
 
 ## Keamanan
 
