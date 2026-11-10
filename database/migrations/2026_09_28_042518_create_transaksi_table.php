@@ -2,52 +2,35 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        if (! Schema::hasColumn('transaksi', 'kode_transaksi')) {
-            Schema::table('transaksi', function (Blueprint $table) {
-                $table->string('kode_transaksi', 20)->nullable()->unique()->after('id_transaksi');
-            });
-        }
+        Schema::create('transaksi', function (Blueprint $table) {
+            $table->increments('id_transaksi');
+            $table->string('kode_transaksi', 20)->nullable()->unique();
+            $table->unsignedInteger('id_pelanggan');
+            $table->unsignedInteger('id_user')->nullable();
+            $table->datetime('tanggal_masuk');
+            $table->datetime('tanggal_selesai')->nullable();
+            $table->integer('total')->default(0);
+            $table->integer('dibayar')->default(0);
+            $table->integer('kembalian')->default(0);
+            $table->enum('status_pembayaran', ['belum_lunas', 'lunas'])->default('belum_lunas');
+            $table->enum('status_laundry', ['menunggu', 'diproses', 'selesai', 'diambil'])->default('menunggu');
+            $table->text('catatan')->nullable();
 
-        DB::table('transaksi')->update(['kode_transaksi' => null]);
-
-        $hitung = [];
-
-        $rows = DB::table('transaksi')
-            ->orderBy('tanggal_masuk')
-            ->orderBy('id_transaksi')
-            ->get(['id_transaksi', 'tanggal_masuk']);
-        
-        foreach ($rows as $row) {
-            $tanggal = Carbon::parse($row->tanggal_masuk ?? now());
-            $prefix = 'LDR-' . $tanggal->format('ymd') . '-';
-            $hitung[$prefix] = ($hitung[$prefix] ?? 0) + 1;
-
-            DB::table('transaksi')
-                ->where('id_transaksi', $row->id_transaksi)
-                ->update(['kode_transaksi' => $prefix . str_pad($hitung[$prefix], 3, '0', STR_PAD_LEFT)]);
-        }
+            $table->foreign('id_pelanggan')
+                  ->references('id_pelanggan')->on('pelanggan');
+            $table->foreign('id_user')
+                  ->references('id')->on('users')->nullOnDelete();
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        if (Schema::hasColumn('transaksi', 'kode_transaksi')) {
-            Schema::table('transaksi', function (Blueprint $table) {
-                $table->dropColumn('kode_transaksi');
-            });
-        }
+        Schema::dropIfExists('transaksi');
     }
 };
