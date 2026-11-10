@@ -2,8 +2,8 @@ FROM php:8.3-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql mbstring xml ctype fileinfo gd \
+    git curl zip unzip libpng-dev libonig-dev libxml2-dev libzip-dev \
+    && docker-php-ext-install pdo pdo_mysql mbstring xml ctype fileinfo gd zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
