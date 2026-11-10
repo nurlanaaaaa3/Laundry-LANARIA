@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('id_pelanggan')
                   ->references('id_pelanggan')->on('pelanggan');
             $table->foreign('id_user')
-                  ->references('id')->on('users')->nullOnDelete();
+                  ->references('id_user')->on('users')->nullOnDelete();
         });
     }
 
