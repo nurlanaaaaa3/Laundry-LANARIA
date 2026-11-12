@@ -41,6 +41,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/laporan/export-excel', [LaporanController::class, 'exportExcel'])->name('admin.laporan.export-excel');
         Route::get('/laporan/export-pdf', [LaporanController::class, 'exportPdf'])->name('admin.laporan.export-pdf');
 
+        Route::get('/statistik', [\App\Http\Controllers\Admin\StatistikController::class, 'index'])->name('admin.statistik');
+
         Route::get('/profile', [AdminProfileController::class, 'edit'])->name('admin.profile');
         Route::put('/profile', [AdminProfileController::class, 'update'])->name('admin.profile.update');
     });

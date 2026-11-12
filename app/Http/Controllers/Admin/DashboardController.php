@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pelanggan;
 use App\Models\Transaksi;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -24,6 +26,18 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
+        // Grafik pendapatan 6 bulan terakhir
+        $bulanLabels = [];
+        $bulanData   = [];
+        for ($i = 5; $i >= 0; $i--) {
+            $bulan = Carbon::now()->subMonths($i);
+            $bulanLabels[] = $bulan->translatedFormat('M Y');
+            $bulanData[]   = Transaksi::where('status_pembayaran', 'lunas')
+                ->whereYear('tanggal_masuk', $bulan->year)
+                ->whereMonth('tanggal_masuk', $bulan->month)
+                ->sum('total');
+        }
+
         return view('admin.dashboard', compact(
             'jumlahPelanggan',
             'jumlahTransaksi',
@@ -31,7 +45,9 @@ class DashboardController extends Controller
             'transaksiDiproses',
             'transaksiSelesai',
             'totalPendapatan',
-            'transaksiTerbaru'
+            'transaksiTerbaru',
+            'bulanLabels',
+            'bulanData'
         ));
     }
 }

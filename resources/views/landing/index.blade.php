@@ -423,79 +423,55 @@
         .ft-bottom a:hover { color: #FFFFFF; }
         .ft a:focus-visible { outline: 3px solid #7FB0EA; outline-offset: 3px; border-radius: 6px; }
 
-        /* Harga */
-        .hg-card {
+        /* Kartu Harga */
+        .harga-card {
             background: #FFFFFF;
-            border: 1px solid var(--border-c);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 1px 2px rgba(6, 59, 112, 0.04), 0 20px 48px -24px rgba(6, 59, 112, 0.28);
+            border: 1px solid #E5E7EB;
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 16px rgba(7,84,154,0.06);
         }
-        .hg-group-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: 13.5px;
-            font-weight: 600;
+        .harga-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(7,84,154,0.14);
+            border-color: var(--main-blue);
+        }
+        .harga-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            background: var(--light-blue);
             color: var(--main-blue);
-            margin: 0;
-            padding: 14px 32px;
-            background: var(--off-white);
-            border-bottom: 1px solid var(--border-c);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
         }
-        .hg-group + .hg-group .hg-group-title { border-top: 1px solid var(--border-c); }
-        .hg-list { list-style: none; margin: 0; padding: 0; }
-        .hg-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 20px 32px;
-            transition: background-color 0.15s ease;
-        }
-        .hg-row + .hg-row { border-top: 1px solid #F1F5F9; }
-        .hg-row:hover { background-color: var(--light-blue); }
-
-        .hg-name { margin: 0 0 2px; font-weight: 600; font-size: 1rem; line-height: 1.4; color: var(--text-main); }
-        .hg-eta { margin: 0; font-size: 13px; color: var(--text-sec); }
-
-        .hg-price {
-            text-align: right;
-            white-space: nowrap;
-            font-weight: 600;
-            font-size: 1.3rem;
-            line-height: 1.2;
+        .harga-nama {
+            font-weight: 700;
             color: var(--dark-blue);
-            font-variant-numeric: tabular-nums;
-        }
-        .hg-price small { display: block; margin-top: 2px; font-size: 12.5px; font-weight: 400; color: var(--text-sec); }
-
-        .hg-cta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px 24px;
-            padding: 24px 32px;
-            background: linear-gradient(135deg, var(--dark-blue), var(--main-blue));
-        }
-        .hg-cta strong { display: block; color: #FFFFFF; font-weight: 600; font-size: 1.05rem; }
-        .hg-cta span { color: #DCEBFA; font-size: 14px; }
-        .hg-cta a {
-            background: #FFFFFF;
-            color: var(--dark-blue);
-            font-weight: 600;
             font-size: 15px;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            transition: background-color 0.2s ease, transform 0.2s ease;
+            margin-bottom: 12px;
         }
-        .hg-cta a:hover { background: var(--light-blue); transform: translateY(-2px); }
-        #harga a:focus-visible { outline: 3px solid #7FB0EA; outline-offset: 3px; }
-
-        @media (max-width: 575px) {
-            .hg-group-title, .hg-row, .hg-cta { padding-left: 20px; padding-right: 20px; }
-            .hg-price { font-size: 1.15rem; }
-            .hg-cta a { width: 100%; text-align: center; }
+        .harga-nominal {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--main-blue);
+            line-height: 1.1;
+        }
+        .harga-satuan {
+            font-size: 13px;
+            color: #94A3B8;
+            margin-bottom: 10px;
+        }
+        .harga-estimasi {
+            font-size: 12.5px;
+            color: #64748B;
+            background: var(--light-blue);
+            border-radius: 20px;
+            padding: 4px 12px;
+            display: inline-block;
         }
     </style>
 </head>
@@ -553,14 +529,14 @@
     </section>
 
     {{-- Tentang Kami --}}
-    <section id="tentang" style="background-color: var(--off-white);">
+    <section id="tentang" style="background: linear-gradient(160deg, #EAF4FC 0%, #FFFFFF 100%);">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-title">Tentang Kami</h2>
                 <p class="section-subtitle">Mengenal lebih dekat LAUNDRIA</p>
             </div>
 
-            <div class="row align-items-stretch g-5">
+            <div class="row align-items-center g-5">
 
                 {{-- Foto --}}
                 <div class="col-lg-5">
@@ -577,43 +553,44 @@
 
                 {{-- Teks --}}
                 <div class="col-lg-7">
-                    <p class="ab-text">
-                        LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman.
-                        Kami menyediakan berbagai layanan laundry, mulai dari cuci lipat, cuci dan
-                        setrika, setrika saja, hingga perawatan bed cover, selimut, gorden, boneka, dan tas.
-                        <br><br>
-                        Kami memahami kesibukan sehari-hari yang membuat Anda tidak selalu memiliki waktu
-                        untuk mengurus cucian. Karena itu, LAUNDRIA hadir untuk membantu meringankan pekerjaan
-                        Anda agar waktu bisa digunakan untuk hal yang lebih penting. Dengan proses pengerjaan yang
-                        teratur dan pelayanan yang ramah, kami berusaha memberikan hasil yang bersih, rapi, dan wangi.
+                    <p style="color:#64748B; font-size:15px; line-height:1.8; margin-bottom:28px;">
+                        LAUNDRIA hadir untuk membantu Anda merawat pakaian dengan lebih praktis dan nyaman,
+                        mulai dari cuci lipat, cuci setrika, hingga bed cover, gorden, boneka, dan tas.
+                        Dengan pelayanan yang ramah dan proses yang teratur, kami berusaha memberikan
+                        hasil yang bersih, rapi, dan wangi setiap saat.
                     </p>
 
-                    <div class="ab-features">
-                        <div class="ab-ft">
-                            <div class="ab-ft-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13" r="4"/><path d="M8 7h.01M11 7h.01"/></svg>
+                    <div class="row g-3 mt-1">
+                        <div class="col-sm-4">
+                            <div style="background:#EAF4FC; border-radius:14px; padding:20px 16px; text-align:center;">
+                                <div style="width:44px;height:44px;background:#07549A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#fff;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13" r="4"/><path d="M8 7h.01M11 7h.01"/></svg>
+                                </div>
+                                <div style="font-weight:700;font-size:13.5px;color:#063B70;margin-bottom:6px;">Layanan Lengkap</div>
+                                <p style="font-size:12px;color:#64748B;margin:0;line-height:1.6;">Cuci lipat, cuci setrika, bed cover, gorden, boneka, dan tas.</p>
                             </div>
-                            <h4 class="ab-ft-title">Layanan lengkap</h4>
-                            <p>Cuci lipat, cuci dan setrika, setrika saja, hingga bed cover, selimut, gorden, boneka, dan tas.</p>
                         </div>
-                        <div class="ab-ft">
-                            <div class="ab-ft-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg>
+                        <div class="col-sm-4">
+                            <div style="background:#EAF4FC; border-radius:14px; padding:20px 16px; text-align:center;">
+                                <div style="width:44px;height:44px;background:#07549A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#fff;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                                </div>
+                                <div style="font-weight:700;font-size:13.5px;color:#063B70;margin-bottom:6px;">Proses Teratur</div>
+                                <p style="font-size:12px;color:#64748B;margin:0;line-height:1.6;">Pengerjaan dari awal sampai cucian siap diambil dengan teratur.</p>
                             </div>
-                            <h4 class="ab-ft-title">Proses teratur</h4>
-                            <p>Pengerjaan dilakukan secara teratur dari awal sampai cucian siap diambil.</p>
                         </div>
-                        <div class="ab-ft">
-                            <div class="ab-ft-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01M15 9.5h.01"/></svg>
+                        <div class="col-sm-4">
+                            <div style="background:#EAF4FC; border-radius:14px; padding:20px 16px; text-align:center;">
+                                <div style="width:44px;height:44px;background:#07549A;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#fff;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14a4.5 4.5 0 0 0 7 0"/><path d="M9 9.5h.01M15 9.5h.01"/></svg>
+                                </div>
+                                <div style="font-weight:700;font-size:13.5px;color:#063B70;margin-bottom:6px;">Pelayanan Ramah</div>
+                                <p style="font-size:12px;color:#64748B;margin:0;line-height:1.6;">Siap membantu dari pemesanan hingga cucian kembali ke Anda.</p>
                             </div>
-                            <h4 class="ab-ft-title">Pelayanan ramah</h4>
-                            <p>Kami siap membantu dengan ramah, mulai dari pemesanan sampai cucian kembali ke Anda.</p>
                         </div>
                     </div>
 
                 </div>
-
             </div>
         </div>
     </section>
@@ -669,44 +646,132 @@
                 <h2 class="section-title">Daftar Harga</h2>
                 <p class="section-subtitle">Harga transparan, tanpa biaya tersembunyi</p>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="hg-card">
+            <div class="row g-4">
+                @forelse ($layanan as $item)
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div style="background:#FFFFFF; border:1px solid #E5E7EB; border-radius:16px; padding:28px 20px; text-align:center; height:100%; transition:all 0.25s ease; box-shadow:0 4px 16px rgba(7,84,154,0.06);"
+                         onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 16px 32px rgba(7,84,154,0.14)';this.style.borderColor='#07549A'"
+                         onmouseout="this.style.transform='';this.style.boxShadow='0 4px 16px rgba(7,84,154,0.06)';this.style.borderColor='#E5E7EB'">
+                        <div style="width:56px;height:56px;border-radius:16px;background:#EAF4FC;color:#07549A;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="12" cy="13" r="4"/><path d="M8 7h.01M11 7h.01"/></svg>
+                        </div>
+                        <div style="font-weight:700;color:#063B70;font-size:15px;margin-bottom:12px;">{{ $item->nama_layanan }}</div>
+                        <div style="font-size:26px;font-weight:700;color:#07549A;line-height:1.1;">Rp{{ number_format($item->harga, 0, ',', '.') }}</div>
+                        <div style="font-size:13px;color:#94A3B8;margin-bottom:10px;">per {{ $item->satuan }}</div>
+                        @if($item->estimasi)
+                        <span style="font-size:12px;color:#07549A;background:#EAF4FC;border-radius:20px;padding:4px 12px;display:inline-block;">
+                            ⏱ {{ $item->estimasi }} jam
+                        </span>
+                        @endif
+                    </div>
+                </div>
+                @empty
+                <div class="col-12 text-center text-muted">Daftar harga belum tersedia.</div>
+                @endforelse
+            </div>
 
-                        @php
-                            $labelSatuan = ['kg' => 'Harga / kilogram', 'pcs' => 'Harga / item'];
-                        @endphp
+            <div style="margin-top:36px;background:linear-gradient(135deg,#063B70,#07549A);border-radius:16px;padding:24px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+                <div>
+                    <strong style="display:block;color:#FFFFFF;font-weight:600;font-size:1.05rem;">Siap memesan?</strong>
+                    <span style="color:#DCEBFA;font-size:14px;">Pilih layanan dan buat pesanan Anda sekarang.</span>
+                </div>
+                <a href="{{ route('login') }}" style="background:#FFFFFF;color:#063B70;font-weight:600;font-size:15px;text-decoration:none;padding:12px 24px;border-radius:12px;transition:all 0.2s;">Pesan Sekarang</a>
+            </div>
+        </div>
+    </section>
 
-                        @forelse (collect($layanan)->groupBy(fn ($i) => strtolower($i->satuan)) as $satuan => $items)
-                            <div class="hg-group">
-                                <h3 class="hg-group-title">{{ $labelSatuan[$satuan] ?? 'Harga / ' . $satuan }}</h3>
-                                <ul class="hg-list">
-                                    @foreach ($items as $item)
-                                        <li class="hg-row">
-                                            <div>
-                                                <p class="hg-name">{{ $item->nama_layanan }}</p>
-                                                @if ($item->estimasi)
-                                                    <p class="hg-eta">Estimasi selesai {{ $item->estimasi }} jam</p>
-                                                @endif
-                                            </div>
-                                            <div class="hg-price">
-                                                Rp{{ number_format($item->harga, 0, ',', '.') }}
-                                                <small>per {{ $item->satuan }}</small>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @empty
-                            <p class="text-center text-muted m-0 p-5">Daftar harga belum tersedia.</p>
-                        @endforelse
+    {{-- Mengapa Memilih LAUNDRIA --}}
+    <section id="mengapa" class="bg-white">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Mengapa Memilih LAUNDRIA?</h2>
+                <p class="section-subtitle">Kami memberikan yang terbaik untuk pakaian Anda</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div style="background:#EAF4FC; border-radius:18px; padding:28px 24px; height:100%; text-align:center;">
+                        <div style="width:60px; height:60px; background:#07549A; border-radius:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4.5 4.5L19 7"/></svg>
+                        </div>
+                        <h5 style="color:#063B70; font-weight:700; margin-bottom:10px;">Hasil Bersih & Wangi</h5>
+                        <p style="color:#64748B; font-size:14px; line-height:1.7; margin:0;">Menggunakan deterjen berkualitas yang membuat pakaian bersih, rapi, dan wangi tahan lama.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div style="background:#DBEAFE; border-radius:18px; padding:28px 24px; height:100%; text-align:center;">
+                        <div style="width:60px; height:60px; background:#1976B8; border-radius:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                        </div>
+                        <h5 style="color:#1D4ED8; font-weight:700; margin-bottom:10px;">Tepat Waktu</h5>
+                        <p style="color:#64748B; font-size:14px; line-height:1.7; margin:0;">Pakaian selesai sesuai estimasi yang dijanjikan, tidak bikin Anda menunggu lama.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div style="background:#E0F2FE; border-radius:18px; padding:28px 24px; height:100%; text-align:center;">
+                        <div style="width:60px; height:60px; background:#0369A1; border-radius:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+                        </div>
+                        <h5 style="color:#075985; font-weight:700; margin-bottom:10px;">Harga Terjangkau</h5>
+                        <p style="color:#64748B; font-size:14px; line-height:1.7; margin:0;">Harga yang transparan dan bersahabat tanpa biaya tersembunyi untuk semua layanan.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div style="background:linear-gradient(135deg,#063B70,#07549A); border-radius:18px; padding:28px 24px; height:100%; text-align:center;">
+                        <div style="width:60px; height:60px; background:rgba(255,255,255,0.2); border-radius:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px;">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        </div>
+                        <h5 style="color:#fff; font-weight:700; margin-bottom:10px;">Pelayanan Ramah</h5>
+                        <p style="color:rgba(255,255,255,0.85); font-size:14px; line-height:1.7; margin:0;">Tim kami siap membantu dengan ramah dan profesional dari awal hingga pakaian kembali ke tangan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <div class="hg-cta">
+    {{-- Testimoni Pelanggan --}}
+    <section id="testimoni" style="background-color: var(--light-blue);">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Apa Kata Pelanggan Kami?</h2>
+                <p class="section-subtitle">Kepuasan pelanggan adalah prioritas kami</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div style="background:#fff; border-radius:18px; padding:28px; height:100%; box-shadow:0 4px 20px rgba(7,84,154,0.08);">
+                        <div style="color:#F59E0B; font-size:18px; margin-bottom:14px;">★★★★★</div>
+                        <p style="color:#374151; font-size:14px; line-height:1.8; margin-bottom:20px; font-style:italic;">"Laundry di sini hasilnya bersih banget dan wangi. Pelayanannya juga ramah, harganya pun terjangkau. Sudah langganan dari lama dan tidak pernah kecewa!"</p>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#07549A,#1976B8); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px;">A</div>
                             <div>
-                                <strong>Siap memesan?</strong>
-                                <span>Pilih layanan dan buat pesanan Anda.</span>
+                                <div style="font-weight:600; color:#1F2937; font-size:14px;">Mutiara</div>
+                                <div style="font-size:12px; color:#94A3B8;">Pelanggan Setia</div>
                             </div>
-                            <a href="{{ route('login') }}">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background:#07549A; border-radius:18px; padding:28px; height:100%; box-shadow:0 8px 28px rgba(7,84,154,0.3);">
+                        <div style="color:#FDE68A; font-size:18px; margin-bottom:14px;">★★★★★</div>
+                        <p style="color:rgba(255,255,255,0.9); font-size:14px; line-height:1.8; margin-bottom:20px; font-style:italic;">"Sangat membantu! Pakaian selesai tepat waktu sesuai estimasi. Cocok banget buat yang sibuk seperti saya. Pasti akan order lagi!"</p>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.2); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px;">B</div>
+                            <div>
+                                <div style="font-weight:600; color:#fff; font-size:14px;">Bima</div>
+                                <div style="font-size:12px; color:rgba(255,255,255,0.7);">Pelanggan Aktif</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div style="background:#fff; border-radius:18px; padding:28px; height:100%; box-shadow:0 4px 20px rgba(7,84,154,0.08);">
+                        <div style="color:#F59E0B; font-size:18px; margin-bottom:14px;">★★★★★</div>
+                        <p style="color:#374151; font-size:14px; line-height:1.8; margin-bottom:20px; font-style:italic;">"Bed cover dan gorden saya dicuci di sini, hasilnya luar biasa bersih. Tidak perlu khawatir soal kualitas, dijamin memuaskan!"</p>
+                        <div style="display:flex; align-items:center; gap:12px;">
+                            <div style="width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#07549A,#1976B8); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px;">D</div>
+                            <div>
+                                <div style="font-weight:600; color:#1F2937; font-size:14px;">Budi</div>
+                                <div style="font-size:12px; color:#94A3B8;">Pelanggan Baru</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -774,9 +839,9 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M9 9.2c.3 2.4 2.4 4.6 5.8 5.6l1-1.3-1.9-1-.9.7c-.8-.4-1.6-1.2-2-2l.7-.9-1-1.9L9 9.2Z"/></svg>
                     </div>
                     <h3>Nomor WhatsApp</h3>
-                    <a class="kt-number" href="https://wa.me/6281234567890" target="_blank" rel="noopener">0812-3456-7890</a>
+                    <a class="kt-number" href="https://wa.me/6208898598393" target="_blank" rel="noopener">0889-8598-4393</a>
                     <p class="kt-note">Cara tercepat untuk menghubungi kami. Pesan di jam operasional dibalas dalam hitungan menit.</p>
-                    <a class="kt-btn" href="https://wa.me/6281234567890?text=Halo%20LAUNDRIA%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20laundry." target="_blank" rel="noopener">Chat via WhatsApp</a>
+                    <a class="kt-btn" href="https://wa.me/6208898598393?text=Halo%20LAUNDRIA%2C%20saya%20ingin%20bertanya%20tentang%20layanan%20laundry." target="_blank" rel="noopener">Chat via WhatsApp</a>
                 </article>
 
                 <article class="kt-card">
@@ -835,7 +900,7 @@
                 <div class="col-6 col-lg-3">
                     <h3 class="ft-title">Layanan</h3>
                     <ul class="ft-links">
-                        @foreach (collect($layanan)->take(6) as $item)
+                        @foreach (collect($layanan)->take(8) as $item)
                             <li><a href="#layanan">{{ $item->nama_layanan }}</a></li>
                         @endforeach
                     </ul>
@@ -847,7 +912,7 @@
                     <ul class="ft-contact">
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z"/><path d="M9 9.2c.3 2.4 2.4 4.6 5.8 5.6l1-1.3-1.9-1-.9.7c-.8-.4-1.6-1.2-2-2l.7-.9-1-1.9L9 9.2Z"/></svg>
-                            <a href="https://wa.me/6281234567890" target="_blank" rel="noopener">0812-3456-7890</a>
+                            <a href="https://wa.me/6208898598393" target="_blank" rel="noopener">0889-8598-4393</a>
                         </li>
                         <li>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
@@ -865,7 +930,6 @@
 
             <div class="ft-bottom">
                 <span>&copy; {{ date('Y') }} LAUNDRIA. Semua hak cipta dilindungi.</span>
-                <a href="#beranda">Kembali ke atas &uarr;</a>
             </div>
         </div>
     </footer>
